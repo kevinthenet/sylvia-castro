@@ -1,0 +1,19 @@
+---
+import ContactForm from '../components/contact/ContactForm.astro';
+import ContactInfo from '../components/contact/ContactInfo.astro';
+import Layout from '../layouts/Layout.astro';
+import Toast from '../components/contact/Toast.astro';
+---
+
+<Layout
+  description="Contact our team to learn more about how we can help you."
+  title="CHB · Contact Us"
+>
+  <Toast success={true} message="Thanks! We'll get in touch soon." />
+  <Toast
+    success={false}
+    message="An error ocurred.  Please make sure your information was entered correctly."
+  />
+  <ContactForm />
+  <ContactInfo />
+</Layout>

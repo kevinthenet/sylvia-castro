@@ -1,0 +1,44 @@
+{
+  "name": "static-site-generator",
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.7.4",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro",
+    "lint:check": "prettier --check --config ./.prettierrc ./src",
+    "lint:fix": "prettier --write --config ./.prettierrc ./src",
+    "synthetic:check": "playwright test",
+    "synthetic:report": "playwright show-report"
+  },
+  "dependencies": {
+    "@alpinejs/collapse": "^3.13.0",
+    "@astrojs/check": "^0.2.0",
+    "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/tailwind": "^5.0.0",
+    "@fontsource/inter": "^5.0.8",
+    "@types/alpinejs": "^3.7.2",
+    "alpinejs": "^3.13.0",
+    "astro": "^3.0.8",
+    "astro-compress": "^2.0.15",
+    "astro-robots-txt": "^0.5.0",
+    "astro-webmanifest": "^1.0.0",
+    "canvas-confetti": "^1.6.0",
+    "cloudinary": "^1.40.0",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0",
+    "prettier-plugin-tailwindcss": "^0.5.4",
+    "sharp": "^0.32.5",
+    "tailwindcss": "^3.0.24",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.7.3",
+    "@playwright/test": "^1.37.1",
+    "wrangler": "^3.7.0"
+  }
+}

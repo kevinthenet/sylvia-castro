@@ -1,0 +1,35 @@
+---
+import Slideshow from './Slideshow.astro';
+---
+
+<section class="py-8 sm:py-10">
+  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="flex flex-col gap-8 lg:gap-16">
+      <div class="flex flex-col items-start gap-4 lg:gap-8">
+        <div class="flex max-w-2xl flex-col items-start gap-4 sm:gap-6">
+          <h1 class="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">
+            Your vision, our expertise
+          </h1>
+          <p class="text-lg text-primary-950/70 dark:text-primary-200/70 sm:text-xl">
+            Find out why we have been a trusted name in the Bay Area for over 20 years
+          </p>
+        </div>
+        <div class="flex flex-row gap-5">
+          <a
+            href="/about"
+            class="inline-flex items-center justify-center rounded-full border border-transparent bg-primary-600 px-5 py-3 text-base font-medium text-white transition hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 dark:bg-primary-400 dark:text-primary-950 dark:hover:bg-primary-300 dark:focus-visible:outline-primary-400"
+          >
+            Learn More
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center rounded-full border border-transparent bg-primary-600 px-5 py-3 text-base font-medium text-white transition hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 dark:bg-primary-400 dark:text-primary-950 dark:hover:bg-primary-300 dark:focus-visible:outline-primary-400"
+          >
+            Get an Estimate
+          </a>
+        </div>
+      </div>
+      <Slideshow />
+    </div>
+  </div>
+</section>

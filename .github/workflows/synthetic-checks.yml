@@ -1,0 +1,68 @@
+name: Synthetic checks
+run-name: ${{github.run_id}}-${{ github.sha }}
+on:
+  schedule:
+    - cron: '0 0 * * *' # once a day
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-check:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: chromium
+            os: ubuntu-latest
+            cache_dir: ~/.cache/ms-playwright
+          - project: firefox
+            os: ubuntu-latest
+            cache_dir: ~/.cache/ms-playwright
+          - project: webkit
+            os: macos-12
+            cache_dir: ~/Library/Caches/ms-playwright
+    timeout-minutes: 20
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.project }} E2E tests
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v3
+        id: pnpm-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - name: Cache playwright binaries
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: ${{ matrix.cache_dir }}
+          key: ${{ runner.os }}-${{ matrix.project }}-pw-${{ hashFiles('**/.playwright-version') }}
+
+      - name: Install dependencies
+        if: steps.pnpm-cache.outputs.cache-hit != 'true'
+        run: pnpm install && pnpm exec playwright --version >> .github/.playwright-version
+
+      - name: Install Playwright Browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: pnpm exec playwright install --with-deps ${{ matrix.project }}
+
+      - name: Run synthetic checks
+        run: pnpm synthetic:check --project=${{ matrix.project }}
+        env:
+          DEBUG: pw:api,pw:browser*
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: playwright-report-${{ matrix.project }}
+          path: playwright-report/
+          retention-days: 30

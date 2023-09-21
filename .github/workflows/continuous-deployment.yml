@@ -1,0 +1,62 @@
+name: Continuous Deploy (CD)
+run-name: ${{ github.sha }}
+on:
+  # Trigger the workflow every time the CI workflow completes
+  # this workflow will be handling completion states
+  workflow_run:
+    workflows:
+      - Continuous Integration (CI)
+    types:
+      - completed
+    branches:
+      - main
+  schedule:
+    # we build even if there are no changes code-wise, since we might have new pictures to display
+    - cron: '0 0 * * 1' # once a week on monday
+  # Allow this run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+
+# Allow this job to clone the repo and create a deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo 'Previous workflow run succeeded, so starting build and deploy process'
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo '::error::Previous workflow run failed, so avoiding running a build'
+  build:
+    needs:
+      - on-success
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v3
+      - name: Install, build, and upload your site
+        uses: withastro/action@v0
+        with:
+          node-version: 20
+          path: .
+          package-manager: pnpm
+          pnpm-version: 8.7.4
+        env:
+  deploy:
+    needs:
+      - on-success
+      - build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

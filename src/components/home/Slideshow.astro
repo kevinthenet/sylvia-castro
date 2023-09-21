@@ -1,0 +1,153 @@
+---
+import { v2 as cloudinary } from 'cloudinary';
+
+type ResourceType = {
+  asset_id: string;
+  public_id: string;
+  folder: string;
+  filename: string;
+  format: string;
+  version: number;
+  resource_type: 'image';
+  type: 'upload';
+  created_at: string;
+  uploaded_at: string;
+  bytes: number;
+  backup_bytes: number;
+  width: number;
+  height: number;
+  aspect_ratio: number;
+  pixels: number;
+  url: string;
+  secure_url: string;
+  status: string;
+  access_mode: string;
+  access_control: null;
+  etag: string;
+  created_by: null;
+  uploaded_by: null;
+};
+
+type SearchResult = {
+  total_count: number;
+  time: number;
+  next_cursor: string;
+  resources: ResourceType[];
+  rate_limit_allowed: number;
+  rate_limit_reset_at: Date;
+  rate_limit_remaining: number;
+};
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+  secure: true,
+});
+
+let photos = [];
+
+const result: SearchResult = await cloudinary.search
+  .expression('folder:castrohomebuilders/projects/*')
+  .sort_by('height', 'desc')
+  .sort_by('width', 'desc')
+  .max_results(20)
+  .execute();
+
+photos = result.resources;
+---
+
+<div
+  class="relative h-half-screen w-full"
+  x-data={`
+  { prevImg: ${photos.length - 1},
+    currentImg: 0,
+    nextImg: 1,
+    next() {
+      this.prevImg = this.currentImg;
+      this.currentImg = this.nextImg;
+      this.nextImg = this.currentImg + 1 > ${photos.length} - 1 ? 0 : this.currentImg + 1;
+    },
+    prev() {
+      this.nextImg = this.currentImg;
+      this.currentImg = this.prevImg;
+      this.prevImg = this.currentImg - 1 < 0 ? ${photos.length} - 1 : this.currentImg - 1;
+    }
+  }`}
+>
+  <!-- Carousel wrapper -->
+  <div class="relative h-half-screen overflow-hidden rounded-3xl">
+    {
+      photos.map((photo, index) => (
+        <div class="duration-700 ease-in-out">
+          <img
+            src={photo.secure_url}
+            class="absolute h-auto w-full"
+            alt="Hero slideshow picture"
+            x-data={`
+              { 
+                id: ${index},
+                get isCurrent() {
+                  return this.currentImg === this.id;
+                },
+              }
+            `}
+            x-show="isCurrent"
+            x-cloak
+          />
+        </div>
+      ))
+    }
+  </div>
+  <!-- Slider controls -->
+  <button
+    type="button"
+    class="group absolute left-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
+    x-on:click.debounce="prev"
+  >
+    <span
+      class="dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:outline-none group-hover:ring-4 group-hover:ring-white group-focus:outline-none group-focus:ring-4 group-focus:ring-white"
+    >
+      <svg
+        class="dark:text-gray-800 h-4 w-4 text-white"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 6 10"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 1 1 5l4 4"></path>
+      </svg>
+      <span class="sr-only">Previous</span>
+    </span>
+  </button>
+  <button
+    type="button"
+    class="group absolute right-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
+    x-on:click.debounce="next"
+  >
+    <span
+      class="dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:outline-none group-hover:ring-4 group-hover:ring-white group-focus:outline-none group-focus:ring-4 group-focus:ring-white"
+    >
+      <svg
+        class="dark:text-gray-800 h-4 w-4 text-white"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 6 10"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m1 9 4-4-4-4"></path>
+      </svg>
+      <span class="sr-only">Next</span>
+    </span>
+  </button>
+</div>

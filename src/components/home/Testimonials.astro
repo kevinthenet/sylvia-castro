@@ -1,0 +1,87 @@
+---
+const defaultTestimonialPicture =
+  'https://res.cloudinary.com/castrokev-in/image/upload/v1694376477/castrohomebuilders/reviews/default-profile-picture.png';
+
+const testimonials = [
+  {
+    name: 'Ruth Stergiou',
+    image:
+      'https://res.cloudinary.com/castrokev-in/image/upload/v1694376447/castrohomebuilders/reviews/ruth-stergiou.webp',
+    message:
+      'It was a pleasure working with Victor and his team. They were conscientious, turned up when they said they would and did a great job on my project which was converting a den to a studio. I liked their attention to detail and high quality workmanship. Victor did a great job keeping everyone on track and communicating with me throughout the project.',
+  },
+  {
+    name: 'Les Mur Des Fleurs',
+    image:
+      'https://res.cloudinary.com/castrokev-in/image/upload/v1694376448/castrohomebuilders/reviews/les-mur-des-fleurs.webp',
+    message:
+      "Castro Home Builders are licensed, efficient, and have worked with San Jose's city permits requirements routinely.  They are professional and reasonably priced.  Great workers!  We had them replace our garage rooftop, and build our work studio with half bathroom in the back of our property.  The studio has a double pane sliding walls.",
+  },
+  {
+    name: 'Padir Consulting Engineers',
+    image:
+      'https://res.cloudinary.com/castrokev-in/image/upload/v1694376447/castrohomebuilders/reviews/padir-consulting-engineers.webp',
+    message:
+      'I know and worked with Victor as a professional. We conducted the seismic retrofit design for a project in San Jose. Victor was the contractor for that project and he did an excellent job for the project. He has a very good talent to coordinate and manage the project in different situations. He is also excellent in coordination with E.O.R. His prices are fair and I have him as our trusted contractor on our list as a Consulting engineer.',
+  },
+  // {
+  //   name: 'Sam',
+  //   message:
+  //     'Victor and his team of experts did an incredible job on our two-story addition and deck. They delivered within a very reasonable timeline and budget. Victor is a true craftsman, and the new spaces in our home came out beautifully. We are absolutely thrilled with the results, and would recommend him highly to anyone looking for a trustworthy, talented, and reliable contractor.',
+  // },
+  // {
+  //   name: 'Leland C.',
+  //   message:
+  //     'Home renovation is not as easy as it looks like it is on popular tv shows, and finding the right contractor to trust is even harder. Thankfully my fiance and I got a referral to Victor and his team at Castro Home Builders. Victor had attentiveness to detail from understanding our scope of work, meeting at the site for a walkthrough, and ultimately providing a thoughtful bid.  He was always responsive via phone call, email or text. Though we decided eventually to go with another general contractor, we had them as a top contender and will plan to use them should our project turn south with our selected GC.',
+  // },
+  // {
+  //   name: 'Liang Fang',
+  //   message:
+  //     'We did a major house expansion project. It was the first major house remodeling project we did.  So we had a lot of questions and decisions to make.  Victor and his team did a great deal of the project.  He was very helpful walking us through the project, answering a lot of questions with a great deal of patience.  He was knowledgeable and responsive.  He provided lots of good suggestions to help decision making.  We are very grateful for his help.',
+  // },
+];
+---
+
+<section class="py-16 sm:py-20">
+  <div class="v mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="flex flex-col items-center gap-12 lg:gap-20">
+      <h2 class="mx-auto max-w-xl text-center text-3xl font-medium tracking-tight sm:text-4xl">
+        Trusted by the Bay Area for over 20 years
+      </h2>
+      <div class="gap-y-6 lg:grid lg:grid-cols-3">
+        {
+          testimonials.map((testimonial) => (
+            <figure class="mx-auto flex max-w-lg flex-col items-center gap-6 py-8 lg:px-8 lg:py-0">
+              <div class="flex flex-row gap-2">
+                {[...Array(5)].map(() => (
+                  <svg
+                    class="h-6 w-6 text-primary-600 dark:text-primary-400"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" />
+                  </svg>
+                ))}
+              </div>
+              <figcaption class="flex flex-col gap-4">
+                <img
+                  class="mx-auto h-8 w-8 rounded-full"
+                  src={testimonial.image || defaultTestimonialPicture}
+                  alt={testimonial.name}
+                />
+                <div class="text-center">
+                  <div class="text-base font-medium">{testimonial.name}</div>
+                </div>
+              </figcaption>
+              <blockquote class="text-md text-center italic leading-loose text-primary-950/70 dark:text-primary-200/70">
+                <p>{`“${testimonial.message}”`}</p>
+              </blockquote>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
