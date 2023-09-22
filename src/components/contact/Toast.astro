@@ -4,7 +4,7 @@ const { message = "Thanks! We'll get in touch soon.", success = true } = Astro.p
 
 <div
   id=`${success ? 'success': 'failure'}-toast`
-  class=`toast hidden animate-fade fixed w-screen mt-5 rounded-full text-black ${success ? 'bg-primary-200' : 'bg-secondary-200'} md:mt-none md:left-1/3 md:w-1/3  md:bg-opacity-80`
+  class=`toast hidden animate-fade fixed w-screen mt-5 rounded-full text-black ${success ? 'bg-success-200' : 'bg-error-200'} md:mt-none md:left-1/3 md:w-1/3  md:bg-opacity-80`
 >
   <div class="flex h-24 content-center items-center justify-around text-center md:h-12">
     {message}

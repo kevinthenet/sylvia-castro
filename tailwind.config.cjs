@@ -11,7 +11,7 @@ module.exports = {
 			transparent: 'transparent',
 			white: '#ffffff',
 			black: '#000000',
-			primary: colors.blue,
+			primary: colors.cyan,
 			success: colors.green,
 			error: colors.red,
 		},
