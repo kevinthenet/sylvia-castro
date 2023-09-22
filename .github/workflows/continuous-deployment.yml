@@ -47,7 +47,6 @@ jobs:
           path: .
           package-manager: pnpm
           pnpm-version: 8.7.4
-        env:
   deploy:
     needs:
       - on-success
