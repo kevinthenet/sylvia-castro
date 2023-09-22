@@ -4,7 +4,8 @@ export const es: Localization = {
   homepage: {
     heroSection: {
       header: 'Serving San Diego and beyond',
-      subtitle: 'Find out why I have been a trusted name in the San Diego Area',
+      subtitle:
+        'Find out why I have been a trusted name for translation and interpretation in the San Diego Area',
       ctaButtons: {
         about: 'Learn more about me',
         contact: 'Get a quote',
