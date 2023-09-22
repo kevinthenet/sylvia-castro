@@ -27,7 +27,7 @@ test('has button: "Go back home" which navigates back to homepage', async ({ pag
   await expect(btn).toBeVisible();
   await btn.click();
   await expect(page).toHaveURL('/');
-  await expect(page).toHaveTitle('Castro Home Builders');
+  await expect(page).toHaveTitle('Sylvia Castro');
 });
 
 test('navigating to an unknown page will render the 404 page', async ({ page }) => {

@@ -36,8 +36,8 @@ test('should contain 3 headings on the page', async ({ page }) => {
   ]);
 });
 
-test('should have a clickable link to email privacy@castrohomebuilders.com', async ({ page }) => {
-  const contactEmail = page.getByRole('link').filter({ hasText: 'privacy@castrohomebuilders.com' });
+test('should have a clickable link to email privacy@sylvia-castro.com', async ({ page }) => {
+  const contactEmail = page.getByRole('link').filter({ hasText: 'privacy@sylvia-castro.com' });
 
   await expect(contactEmail).toBeVisible();
   await contactEmail.click();

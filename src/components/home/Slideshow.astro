@@ -48,7 +48,7 @@ cloudinary.config({
 let photos = [];
 
 const result: SearchResult = await cloudinary.search
-  .expression('folder:castrohomebuilders/projects/*')
+  .expression('folder:sylvia-castro/projects/*')
   .sort_by('height', 'desc')
   .sort_by('width', 'desc')
   .max_results(20)

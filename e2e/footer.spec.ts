@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
 test('should have a logo', async ({ page }) => {
   const footer = page.locator('footer');
 
-  await expect(footer.getByAltText('Castro Home Builders Logo')).toBeVisible();
+  await expect(footer.getByAltText('Sylvia Castro Logo')).toBeVisible();
 });
 
 test('should have some description text', async ({ page }) => {
@@ -66,7 +66,7 @@ for (const link of socialLinks) {
     const newTab = await newTabPromise;
 
     await newTab.waitForLoadState();
-    await expect(newTab).not.toHaveURL(/castrohomebuilders/);
+    await expect(newTab).not.toHaveURL(/sylvia-castro/);
   });
 }
 
@@ -79,6 +79,6 @@ for (const link of internalLinks) {
     await expect(internalLink).toBeVisible();
 
     await internalLink.click();
-    await expect(page).toHaveURL(/castrohomebuilders/);
+    await expect(page).toHaveURL(/sylvia-castro/);
   });
 }

@@ -18,9 +18,9 @@ const { description, title } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/chb-logo.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/chb-logo.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/chb-logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/sylvia-castro-logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/sylvia-castro-logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/sylvia-castro-logo.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
@@ -31,7 +31,7 @@ const { description, title } = Astro.props;
     class="bg-primary-50 text-primary-950 antialiased transition dark:bg-primary-950 dark:text-primary-200"
   >
     <Header />
-    <main>
+    <main transition:animate="fade">
       <slot />
     </main>
     <Footer />

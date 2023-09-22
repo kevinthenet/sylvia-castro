@@ -19,7 +19,7 @@ test.skip('should not have any automatically detectable accessibility issues', a
 });
 
 test('has title', async ({ page }) => {
-  await expect(page).toHaveTitle('Castro Home Builders');
+  await expect(page).toHaveTitle('Sylvia Castro');
 });
 
 test('has "Learn More" and "Get an Estimate" buttons which lead to the about and contact page, respectively', async ({
@@ -63,7 +63,7 @@ test('has an about us section with a "Read More" button that leads to the about 
   await expect(page).toHaveTitle(/About/);
 });
 
-test('has a testimonials section', async ({ page }) => {
+test('has a Recommendations section', async ({ page }) => {
   await expect(page.getByRole('figure').filter({ hasText: 'Ruth Stergiou' })).toBeVisible();
 });
 

@@ -42,8 +42,8 @@ test('should contain a phone number that can be dialed from the site', async ({ 
   await expect(page).toHaveURL(/contact/);
 });
 
-test('should have a clickable link to email hello@castrohomebuilders.com', async ({ page }) => {
-  const contactEmail = page.getByRole('link').filter({ hasText: 'hello@castrohomebuilders.com' });
+test('should have a clickable link to email hello@sylvia-castro.com', async ({ page }) => {
+  const contactEmail = page.getByRole('link').filter({ hasText: 'hello@sylvia-castro.com' });
 
   await expect(contactEmail).toBeVisible();
   await contactEmail.click();
@@ -91,7 +91,7 @@ test.describe('contact form', () => {
 
   test('should display a success toast and confetti with valid input', async ({ page }) => {
     await page.getByLabel('Full Name').fill('Test Person');
-    await page.getByLabel('Email').fill('test@castrohomebuilders.com');
+    await page.getByLabel('Email').fill('test@sylvia-castro.com');
     await page.getByLabel('Message').fill('This is a test');
 
     await page.getByRole('button', { name: 'Submit' }).click();

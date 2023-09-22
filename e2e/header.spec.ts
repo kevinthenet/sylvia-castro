@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
 test('should have a logo', async ({ page }) => {
   const header = page.locator('header');
 
-  await expect(header.getByAltText('Castro Home Builders Logo')).toBeVisible();
+  await expect(header.getByAltText('Sylvia Castro Logo')).toBeVisible();
 });
 
 test('should have a toggle theme button', async ({ page }) => {
@@ -73,6 +73,6 @@ for (const link of internalLinks) {
     await expect(internalLink).toBeVisible();
 
     await internalLink.click();
-    await expect(page).toHaveURL(/castrohomebuilders/);
+    await expect(page).toHaveURL(/sylvia-castro/);
   });
 }
