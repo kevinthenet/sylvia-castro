@@ -59,9 +59,9 @@ export const en: Localization = {
     },
     aboutSection: {
       header: 'About me',
-      aboutText:
+      description:
         'As a translator and interpreter, I have done work for various organizations, translated and interpreted from English to Spanish on legal, social, family, employment, health, education, and government issues, among others. I had the pleasure of working for different public and private agencies. Translation work undergoes a multiple proofreading and cross-referencing process to assure that the meaning, context, tone, and message of all translated text use the most accurate and appropriate language and choice of words possible. On the other hand, interpretation will always require quick processing of information, and message rendition. Interpretation, either simultaneous or consecutive, requires knowledge of language registers and language equivalents. The accuracy of my translations and faithfulness of my interpretations will satisfy all of your demands. If you have a project that needs to be translated, or a meeting to be interpreted, feel free to contact me for a quote and to arrange an assignment.',
-      aboutButton: 'Read more',
+      button: 'Read more',
     },
     recommendationSection: {
       header: 'Trusted by public and private organizations for over 20 years',

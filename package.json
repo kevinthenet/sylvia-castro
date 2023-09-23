@@ -23,6 +23,7 @@
     "@fontsource/inter": "^5.0.8",
     "@types/alpinejs": "^3.7.2",
     "alpinejs": "^3.13.0",
+    "alpinejs-i18n": "^2.4.0",
     "astro": "^3.0.8",
     "astro-compress": "^2.0.15",
     "astro-robots-txt": "^0.5.0",

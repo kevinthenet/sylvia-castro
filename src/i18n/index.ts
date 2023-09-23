@@ -30,8 +30,8 @@ export type Localization = {
     };
     aboutSection: {
       header: string;
-      aboutText: string;
-      aboutButton: string;
+      description: string;
+      button: string;
     };
     recommendationSection: {
       header: string;
@@ -119,3 +119,21 @@ export const messages: Messages = {
   en,
   es,
 };
+
+type Paths<T> = T extends object
+  ? { [K in keyof T]: `${Exclude<K, symbol>}${'' | `.${Paths<T[K]>}`}` }[keyof T]
+  : never;
+
+type Leaves<T> = T extends object
+  ? {
+      [K in keyof T]: `${Exclude<K, symbol>}${Leaves<T[K]> extends never
+        ? ''
+        : `.${Leaves<T[K]>}`}`;
+    }[keyof T]
+  : never;
+
+export type LocalizationPath = Paths<Localization>;
+type LocalizationLeaf = Leaves<Localization>;
+
+export const localize = (prefix: LocalizationPath, component: string) =>
+  `$t('${prefix}.${component}')`;

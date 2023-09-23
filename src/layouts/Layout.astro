@@ -43,8 +43,20 @@ const { description, title } = Astro.props;
     <script>
       import Alpine from 'alpinejs';
       import collapse from '@alpinejs/collapse';
+      import AlpineI18n from 'alpinejs-i18n';
+
+      const messagesResponse = await fetch('/localization');
+
+      const { messages } = await messagesResponse.json();
+
+      document.addEventListener('alpine-i18n:ready', function () {
+        const locale = 'en';
+        window.AlpineI18n.fallbackLocale = 'en';
+        window.AlpineI18n.create(locale, messages);
+      });
 
       Alpine.plugin(collapse);
+      Alpine.plugin(AlpineI18n);
 
       Alpine.store('theme', {
         init() {
@@ -52,9 +64,11 @@ const { description, title } = Astro.props;
             if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
               return localStorage.getItem('theme') === 'dark';
             }
+
             if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
               return true;
             }
+
             return false;
           })();
         },
@@ -64,6 +78,30 @@ const { description, title } = Astro.props;
         toggle() {
           this.isDark = !this.isDark;
           localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+        },
+      });
+
+      Alpine.store('locale', {
+        init() {
+          this.spanishEnabled = (() => {
+            if (typeof localStorage !== 'undefined' && localStorage.getItem('locale')) {
+              return localStorage.getItem('locale') === 'es';
+            }
+
+            if (window.navigator.language.startsWith('es')) {
+              return true;
+            }
+
+            return false;
+          })();
+        },
+
+        spanishEnabled: false,
+
+        toggle() {
+          this.spanishEnabled = !this.spanishEnabled;
+          const nextLocale = this.spanishEnabled ? 'es' : 'en';
+          localStorage.setItem('locale', nextLocale);
         },
       });
 

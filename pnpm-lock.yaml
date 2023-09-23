@@ -26,6 +26,9 @@ dependencies:
   alpinejs:
     specifier: ^3.13.0
     version: 3.13.0
+  alpinejs-i18n:
+    specifier: ^2.4.0
+    version: 2.4.0
   astro:
     specifier: ^3.0.8
     version: 3.0.8
@@ -1428,6 +1431,10 @@ packages:
     resolution: {integrity: sha512-F0SAmZ8iUtS//m8DmCTA0jlh6TDKkHQyK6xc6V4KDTyZKA9dnvX9/3sRTVQrWm79glUAZbnmmNcdYwUIHWVybw==}
     engines: {node: '>=0.4.0'}
     hasBin: true
+
+  /alpinejs-i18n@2.4.0:
+    resolution: {integrity: sha512-SXlha15ek1j6r7xdl2r5mWOL0tC8qWYfxRbGzVaX0gLlTYShasV2PSd05/mDiWnfYAixjkwTO4347ewzpouJgw==}
+    dev: false
 
   /alpinejs@3.13.0:
     resolution: {integrity: sha512-7FYR1Yz3evIjlJD1mZ3SYWSw+jlOmQGeQ1QiSufSQ6J84XMQFkzxm6OobiZ928SfqhGdoIp2SsABNsS4rXMMJw==}
