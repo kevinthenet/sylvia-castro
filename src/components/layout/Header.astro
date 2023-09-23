@@ -40,18 +40,18 @@ const links = [
 
     <!-- Actions -->
     <div class="-mr-2 flex items-center space-x-2 sm:space-x-3">
-      <!-- Toggle language mode -->
+      <!-- Toggle locale mode -->
       <button
         type="button"
         class="inline-flex h-14 w-14 items-center justify-center rounded-full text-primary-950 ring-primary-950 transition hover:bg-primary-500/10 focus:outline-none focus-visible:ring-2 dark:text-primary-200 dark:hover:bg-primary-400/10"
         x-data
-        @click="$store.language.toggle()"
+        @click="$store.locale.toggle()"
       >
-        <span class="sr-only">Toggle language mode</span>
-        <h1 x-cloak :class="{ 'hidden': !($store.language.spanishEnabled) }" aria-hidden="true">
+        <span class="sr-only">Toggle locale mode</span>
+        <h1 x-cloak :class="{ 'hidden': !($store.locale.spanishEnabled) }" aria-hidden="true">
           EN
         </h1>
-        <h1 x-cloak :class="{ 'hidden': $store.language.spanishEnabled }" aria-hidden="true">ES</h1>
+        <h1 x-cloak :class="{ 'hidden': $store.locale.spanishEnabled }" aria-hidden="true">ES</h1>
       </button>
 
       <!-- Toggle theme mode -->

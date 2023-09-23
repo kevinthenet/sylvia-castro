@@ -50,7 +50,7 @@ const { description, title } = Astro.props;
       const { messages } = await messagesResponse.json();
 
       document.addEventListener('alpine-i18n:ready', function () {
-        const locale = 'en';
+        const locale = localStorage.getItem('locale') || 'en';
         window.AlpineI18n.fallbackLocale = 'en';
         window.AlpineI18n.create(locale, messages);
       });
@@ -102,6 +102,7 @@ const { description, title } = Astro.props;
           this.spanishEnabled = !this.spanishEnabled;
           const nextLocale = this.spanishEnabled ? 'es' : 'en';
           localStorage.setItem('locale', nextLocale);
+          window.AlpineI18n.locale = nextLocale;
         },
       });
 
