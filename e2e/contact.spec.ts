@@ -62,7 +62,7 @@ test.describe('contact form', () => {
 
   test.beforeEach(async ({ page }) => {
     // set up a route to intercept FormKeep requests and respond with 200
-    await page.route('https://formkeep.com/f/2d33e37c28a5', async (route, request) => {
+    await page.route('https://formkeep.com/f/bf8f2fdda780', async (route, request) => {
       console.log(`Request to ${request.url()} intercepted by Playwright`);
       console.log(await request.allHeaders());
       console.log(request.postData());
@@ -72,7 +72,7 @@ test.describe('contact form', () => {
 
   test('should display an error toast with invalid input', async ({ page }) => {
     // explicitly abort requests to FormKeep, just for extra safety
-    await page.route('https://formkeep.com/f/2d33e37c28a5', async (route, request) => {
+    await page.route('https://formkeep.com/f/bf8f2fdda780', async (route, request) => {
       console.log(`Request to ${request.url()} intercepted by Playwright`);
       console.log(await request.allHeaders());
       console.log(request.postData());
