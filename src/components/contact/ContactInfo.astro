@@ -1,9 +1,14 @@
+---
+import { localize, type LocalizationPath } from '../../i18n';
+const prefix: LocalizationPath = 'contact.info';
+---
+
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <dl class="grid gap-6 lg:grid-cols-3">
       <!-- Address -->
       <div class="rounded-3xl bg-primary-500/10 px-6 py-8 dark:bg-primary-400/10">
-        <dt class="sr-only">Postal address</dt>
+        <dt class="sr-only" x-text={localize(prefix, 'postalAddress')}>Postal address</dt>
         <dd class="flex h-full flex-col justify-between gap-4">
           <svg
             class="h-6 w-6 text-primary-600 dark:text-primary-400"
@@ -24,7 +29,7 @@
 
       <!-- Phone number -->
       <div class="rounded-3xl bg-primary-500/10 px-6 py-8 dark:bg-primary-400/10">
-        <dt class="sr-only">Phone number</dt>
+        <dt class="sr-only" x-text={localize(prefix, 'phoneNumber')}>Phone number</dt>
         <dd class="flex h-full flex-col justify-between gap-4">
           <svg
             class="h-6 w-6 text-primary-600 dark:text-primary-400"
@@ -43,7 +48,7 @@
 
       <!-- Email -->
       <div class="rounded-3xl bg-primary-500/10 px-6 py-8 dark:bg-primary-400/10">
-        <dt class="sr-only">Email</dt>
+        <dt class="sr-only" x-text={localize(prefix, 'email')}>Email</dt>
         <dd class="flex h-full flex-col justify-between gap-4">
           <svg
             class="h-6 w-6 text-primary-600 dark:text-primary-400"

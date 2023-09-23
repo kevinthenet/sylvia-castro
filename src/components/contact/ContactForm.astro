@@ -1,12 +1,25 @@
+---
+import { localize, type LocalizationPath } from '../../i18n';
+const prefix: LocalizationPath = 'contact';
+const formPrefix: LocalizationPath = 'contact.form';
+---
+
 <section class="py-16 sm:py-20">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="grid gap-12 lg:grid-cols-2 lg:gap-8">
       <div class="flex flex-col gap-4 sm:gap-6">
-        <h1 class="text-3xl font-medium tracking-tight sm:text-4xl">
+        <h1
+          class="text-3xl font-medium tracking-tight sm:text-4xl"
+          x-text={localize(prefix, 'header')}
+        >
           Unlock opportunities with Spanish-speakers
         </h1>
-        <p class="max-w-lg text-lg text-primary-950/70 dark:text-primary-200/70 sm:text-xl">
-          I'd love to know how I could be of help.  I provide free quotes, so please feel free to reach out for any project, big or small!
+        <p
+          class="max-w-lg text-lg text-primary-950/70 dark:text-primary-200/70 sm:text-xl"
+          x-text={localize(prefix, 'subtitle')}
+        >
+          I'd love to know how I could be of help. I provide free quotes, so please feel free to
+          reach out for any project, big or small!
         </p>
       </div>
       <form
@@ -19,7 +32,9 @@
       >
         <!-- Full name input -->
         <div>
-          <label for="name" class="sr-only">Full name</label>
+          <label for="name" class="sr-only" x-text={localize(formPrefix, 'fullName')}
+            >Full name</label
+          >
           <input
             type="text"
             name="name"
@@ -27,12 +42,13 @@
             autocomplete="name"
             class="block w-full appearance-none rounded-md border-0 bg-primary-50 px-4 py-4 text-base ring-1 ring-primary-900/40 transition placeholder:text-primary-950/60 hover:ring-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-primary-950 dark:ring-primary-200/40 dark:placeholder:text-primary-200/60 dark:hover:ring-primary-400 dark:focus:ring-primary-400"
             placeholder="Full name"
+            x-bind:placeholder="$locale() === 'en' ? 'Full Name' : 'Nombre Completo'"
           />
         </div>
 
         <!-- Email input -->
         <div>
-          <label for="email" class="sr-only">Email</label>
+          <label for="email" class="sr-only" x-text={localize(formPrefix, 'email')}>Email</label>
           <input
             type="email"
             name="email"
@@ -40,18 +56,22 @@
             autocomplete="email"
             class="block w-full appearance-none rounded-md border-0 bg-primary-50 px-4 py-4 text-base ring-1 ring-primary-900/40 transition placeholder:text-primary-950/60 hover:ring-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-primary-950 dark:ring-primary-200/40 dark:placeholder:text-primary-200/60 dark:hover:ring-primary-400 dark:focus:ring-primary-400"
             placeholder="Email"
+            x-bind:placeholder="$locale() === 'en' ? 'Email' : 'Correo Electrónico'"
           />
         </div>
 
         <!-- Message textarea -->
         <div>
-          <label for="message" class="sr-only">Message</label>
+          <label for="message" class="sr-only" x-text={localize(formPrefix, 'message')}
+            >Message</label
+          >
           <textarea
             name="message"
             id="message"
             rows="3"
             class="block w-full appearance-none rounded-md border-0 bg-primary-50 px-4 py-4 text-base ring-1 ring-primary-900/40 transition placeholder:text-primary-950/60 hover:ring-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-primary-950 dark:ring-primary-200/40 dark:placeholder:text-primary-200/60 dark:hover:ring-primary-400 dark:focus:ring-primary-400"
-            placeholder="Message"></textarea>
+            placeholder="Message"
+            x-bind:placeholder="$locale() === 'en' ? 'Message' : 'Mensaje'"></textarea>
         </div>
 
         <div class="g-recaptcha" data-sitekey="6LdMG0QoAAAAABi1YLoPU62Ct97DnS7TgM38IH4X"></div>
@@ -60,6 +80,7 @@
           <button
             class="inline-flex items-center justify-center rounded-full border border-transparent bg-primary-600 px-5 py-3 text-base font-medium text-white transition hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 dark:bg-primary-400 dark:text-primary-950 dark:hover:bg-primary-300 dark:focus-visible:outline-primary-400"
             type="submit"
+            x-text={localize(formPrefix, 'submit')}
           >
             Submit
           </button>

@@ -3,191 +3,252 @@ import { type Localization } from './index';
 export const es: Localization = {
   homepage: {
     heroSection: {
-      header: 'Sirviendo San Diego y mas alla',
-      subtitle: 'Descubre porque soy un nombre de confianza en la area de San Diego',
+      header: 'Sirviendo a San Diego y más allá',
+      subtitle:
+        'Descubre por qué soy un nombre de confianza en traducción e interpretación en el área de San Diego',
       ctaButtons: {
-        about: 'Aprende mas sobre mi',
-        contact: 'Obtenga una cotizacion',
+        about: 'Más información sobre mí',
+        contact: 'Obtener una cotización',
       },
     },
     serviceSection: {
-      header: 'Services',
-      serviceCategories: {
-        translation: {
-          name: 'Translation Services',
+      header: 'Servicios',
+      serviceCategories: [
+        {
+          id: 'categoría-1',
+          name: 'Servicios de Traducción',
           services: [
-            'Document Translation',
-            'Website Localization',
-            'Technical Translation',
-            'Medical Translation',
-            'Legal Translation',
-            'Business Translation',
-            'E-commerce Translation',
-            'Multilingual Content Creation',
-            'Certified Translations',
-            'Technical Manuals',
+            'Traducción de Documentos',
+            'Localización de Sitios Web',
+            'Traducción Técnica',
+            'Traducción Médica',
+            'Traducción Legal',
+            'Traducción Empresarial',
+            'Traducción de Comercio Electrónico',
+            'Creación de Contenido Multilingüe',
+            'Traducciones Certificadas',
+            'Manuales Técnicos',
           ],
         },
-        interpretation: {
-          name: 'Interpretation Services',
+        {
+          id: 'categoría-2',
+          name: 'Servicios de Interpretación',
           services: [
-            'On-Site Interpretation',
-            'Video Conferencing Interpretation',
-            'Phone Interpretation',
-            'Simultaneous Interpretation',
-            'Consecutive Interpretation',
-            'Escort Interpretation',
-            'Medical Interpretation',
-            'Legal Interpretation',
-            'Community Interpretation',
+            'Interpretación in situ',
+            'Interpretación por Videoconferencia',
+            'Interpretación Telefónica',
+            'Interpretación Simultánea',
+            'Interpretación Consecutiva',
+            'Interpretación de Escolta',
+            'Interpretación Médica',
+            'Interpretación Legal',
+            'Interpretación Comunitaria',
           ],
         },
-        additional: {
-          name: 'Additional Services',
+        {
+          id: 'categoría-3',
+          name: 'Servicios Adicionales',
           services: [
-            'Language Consulting',
-            'Localization Consultation',
-            'Cross-Cultural Communication Training',
-            'Desktop Publishing and Formatting',
-            'Quality Assurance and Language Testing',
-            'Language Pair Specialization',
-            'Custom Language Solutions',
+            'Asesoramiento Lingüístico',
+            'Consultoría de Localización',
+            'Entrenamiento en Comunicación Intercultural',
+            'Maquetación y Formateo de Documentos',
+            'Aseguramiento de Calidad y Pruebas de Idiomas',
+            'Especialización en Pares de Idiomas',
+            'Soluciones de Idiomas Personalizadas',
           ],
         },
-      },
+      ],
     },
     aboutSection: {
-      header: 'About me',
+      header: 'Sobre mí',
       description:
-        'As a translator and interpreter, I have done work for various organizations, translated and interpreted from English to Spanish on legal, social, family, employment, health, education, and government issues, among others. I had the pleasure of working for different public and private agencies. Translation work undergoes a multiple proofreading and cross-referencing process to assure that the meaning, context, tone, and message of all translated text use the most accurate and appropriate language and choice of words possible. On the other hand, interpretation will always require quick processing of information, and message rendition. Interpretation, either simultaneous or consecutive, requires knowledge of language registers and language equivalents. The accuracy of my translations and faithfulness of my interpretations will satisfy all of your demands. If you have a project that needs to be translated, or a meeting to be interpreted, feel free to contact me for a quote and to arrange an assignment.',
-      button: 'Read more',
+        'Como traductora e intérprete, he trabajado para diversas organizaciones, traduciendo e interpretando de español al inglés en asuntos legales, sociales, familiares, laborales, de salud, educación y gubernamentales, entre otros. He tenido el placer de trabajar para diferentes agencias públicas y privadas. El trabajo de traducción pasa por un proceso de revisión múltiple y referencias cruzadas para asegurar que el significado, contexto, tono y mensaje de todo el texto traducido utilicen el lenguaje más preciso y adecuado posible. Por otro lado, la interpretación siempre requerirá un procesamiento rápido de la información y la transmisión del mensaje. La interpretación, ya sea simultánea o consecutiva, requiere conocimiento de los registros lingüísticos y los equivalentes lingüísticos. La precisión de mis traducciones y la fidelidad de mis interpretaciones satisfarán todas sus demandas. Si tiene un proyecto que necesita ser traducido o una reunión que necesita ser interpretada, no dude en ponerse en contacto conmigo para obtener un presupuesto y organizar una asignación.',
+      button: 'Leer más',
     },
     recommendationSection: {
-      header: 'Trusted by public and private organizations for over 20 years',
+      header: 'Confiado por organizaciones públicas y privadas durante más de 20 años',
       recommendations: [
         {
           name: 'Rosemarie Perez',
           image: '/rosemarie-perez.jpeg',
           message:
-            'Sylvia Castro worked for me as a translator and interpreter for three years. She was excellent at her job. She has since received certification as an interpreter. This highly skilled individual would be an asset to organizations wanting to communicate in Spanish.Sylvia Castro worked for me as a translator and interpreter for three years. She was excellent at her job. She has since received certification as an interpreter. This highly skilled individual would be an asset to organizations wanting to communicate in Spanish.',
+            'Sylvia Castro trabajó para mí como traductora e intérprete durante tres años. Fue excelente en su trabajo. Desde entonces ha obtenido certificación como intérprete. Esta persona altamente capacitada sería un activo para las organizaciones que deseen comunicarse en español. Sylvia Castro trabajó para mí como traductora e intérprete durante tres años. Fue excelente en su trabajo. Desde entonces ha obtenido certificación como intérprete. Esta persona altamente capacitada sería un activo para las organizaciones que deseen comunicarse en español.',
         },
         {
           name: 'Rita Melton',
           image: '/rita-melton.jpeg',
           message:
-            'Sylvia has worked for Redwood City School District as a Translator for many years. I have seen her handle the stresses of translation with a calm focus. She takes the time to make sure she is accurate in her communication. She does a great job.',
+            'Sylvia ha trabajado para el Distrito Escolar de Redwood City como traductora durante muchos años. La he visto manejar el estrés de la traducción con enfoque y calma. Se toma el tiempo para asegurarse de que su comunicación sea precisa. Lo hace muy bien.',
         },
         {
           name: 'Naomi Sigler Hunter, APR',
           image: '/naomi-sigler-hunter.jpeg',
           message:
-            'Sylvia is an extremely hard worker and very easy to work with. She translated writing for me under great tight deadlines and occasionally at inconvenient times, but never showed signs of stress. She is the type of worker who not only does what is asked of her, but goes beyond what she is personally responsible for to make sure the organization is doing top quality work. Sylvia is also an idea person, and makes very good suggestions that helped me do my own job better. I always enjoyed working with Sylvia and recommend her with enthusiasm!',
+            'Sylvia es una trabajadora extremadamente dedicada y muy fácil de trabajar. Tradujo escritos para mí bajo plazos ajustados y ocasionalmente en momentos inoportunos, pero nunca mostró signos de estrés. Es el tipo de trabajadora que no solo hace lo que se le pide, sino que va más allá de lo que le corresponde personalmente para asegurarse de que la organización esté realizando un trabajo de alta calidad. Sylvia también es una persona llena de ideas y hace muy buenas sugerencias que me ayudaron a hacer mi trabajo mejor. Siempre disfruté trabajar con Sylvia y la recomiendo con entusiasmo.',
         },
         {
           name: 'Hilary Paulson',
           image: '/hilary-paulson.jpeg',
           message:
-            'Sylvia worked as the translator for the Redwood City School Board meetings - working well with parents and community members often having to translate in pressurized environments with time constraints.',
+            'Sylvia trabajó como traductora en las reuniones de la Junta Escolar de Redwood City, trabajando bien con padres y miembros de la comunidad, a menudo teniendo que traducir en entornos de presión y con restricciones de tiempo.',
         },
         {
           name: 'Julia Morales',
           message:
-            'Sylvia was one of the best students in the classroom who was of great help to the professor. She was fluent in both languages and a leader in the classroom.Sylvia was one of the best students in the classroom who was of great help to the professor. She was fluent in both languages and a leader in the classroom.',
+            'Sylvia fue una de las mejores estudiantes en el aula y fue de gran ayuda para el profesor. Hablaba fluidamente ambos idiomas y era líder en el aula. Sylvia fue una de las mejores estudiantes en el aula y fue de gran ayuda para el profesor. Hablaba fluidamente ambos idiomas y era líder en el aula.',
         },
         {
           name: 'Juanita Ramirez',
           message:
-            'Sylvia is a professional in every way. I have observed her in translation situations with English and Spanish. She is very fluent in both English and Spanish. She has a wide vocabulary in both languages to provide the best possible translation to her clients. I would recommend her to any organization or business that needs quality translation.',
+            'Sylvia es una profesional en todos los sentidos. La he observado en situaciones de traducción en inglés y español. Habla con fluidez tanto en inglés como en español. Tiene un amplio vocabulario en ambos idiomas para proporcionar la mejor traducción posible a sus clientes. La recomendaría a cualquier organización o negocio que necesite traducciones de calidad.',
         },
       ],
     },
     ctaSection: {
-      header: 'Reach bigger audiences',
-      subtitle: 'Get a free quote',
-      button: 'Contact me',
+      header: 'Llega a audiencias más grandes',
+      subtitle: 'Obtén una cotización gratuita',
+      button: 'Contáctame',
     },
   },
   about: {
-    header: 'About Me',
-    subtitle: 'Bridging language and cultural barriers',
+    header: 'Acerca de mí',
+    subtitle: 'Superando barreras lingüísticas y culturales',
     missionSection: {
-      pictureAlt: 'Sylvia Castro Profile Picture',
-      header: 'My mission',
-      text: "¡Hola! I'm Sylvia Castro, a San Diego-based professional interpreter and translator, certified by both the American Translators Association (ATA) and the Northern California Translators Association (NCTA). My extensive experience encompasses legal, social, family, employment, health, education, and government contexts, among others, serving various public and private organizations. In my translation work, I emphasize precision through rigorous proofreading and cross-referencing, ensuring that translated content preserves not only the words but also the true essence, context, tone, and message. My interpretation expertise, whether simultaneous or consecutive, relies on a deep understanding of language registers and equivalents, guaranteeing seamless communication. Count on me for accurate translations and faithful interpretations that exceed your expectations. Feel free to contact me for project quotes and assignment arrangements. Let's bridge linguistic divides and facilitate effortless communication together. ¡Contáctame hoy mismo! (Contact me today!)",
-      stats: [{ name: 'Experience', value: 'Over 20 years' }],
+      pictureAlt: 'Foto de Perfil de Sylvia Castro',
+      header: 'Mi misión',
+      text: 'Hi! Soy Sylvia Castro, una intérprete y traductora profesional con sede en San Diego, certificada por la Asociación de Traductores de América (ATA) y la Asociación de Traductores del Norte de California (NCTA). Mi amplia experiencia abarca contextos legales, sociales, familiares, laborales, de salud, educación y gubernamentales, entre otros, sirviendo a diversas organizaciones públicas y privadas. En mi trabajo de traducción, enfatizo la precisión a través de una rigurosa revisión y referencias cruzadas, asegurando que el contenido traducido preserve no solo las palabras, sino también la verdadera esencia, contexto, tono y mensaje. Mi experiencia en interpretación, ya sea simultánea o consecutiva, se basa en una profunda comprensión de los registros lingüísticos y los equivalentes, garantizando una comunicación fluida. Confía en mí para obtener traducciones precisas e interpretaciones fieles que superen tus expectativas. No dudes en contactarme para obtener presupuestos de proyectos y coordinar asignaciones. Vamos a superar las barreras lingüísticas y facilitar la comunicación sin esfuerzo juntos. Contact me today! (¡Contáctame hoy mismo!)',
+      stats: [{ name: 'Experiencia', value: 'Más de 20 años' }],
     },
-    valuesSection: [
+    valuesSection: {
+      header: 'Mis valores',
+      values: [
+        [
+          {
+            ref: '01',
+            name: 'Precisión',
+            description:
+              'Me comprometo a entregar traducciones e interpretaciones precisas que transmitan fielmente el significado previsto y coincidan con el registro de tu mensaje.',
+          },
+          {
+            ref: '02',
+            name: 'Profesionalismo',
+            description:
+              'Estoy dedicada a mantener altos estándares profesionales, incluyendo puntualidad, confidencialidad y conducta ética.',
+          },
+        ],
+        [
+          {
+            ref: '03',
+            name: 'Excelencia',
+            description:
+              'Me dedico a proporcionar un servicio de primera calidad que se adapte a tus necesidades. Haré todo lo posible para cumplir y superar tu estándar de excelencia.',
+          },
+          {
+            ref: '04',
+            name: 'Respeto',
+            description:
+              'Mi objetivo es ser transparente en mis precios, procesos y plazos de proyectos, asegurando que sepas qué esperar.',
+          },
+        ],
+      ],
+    },
+  },
+  contact: {
+    header: 'Desbloquea oportunidades con hablantes de español',
+    subtitle:
+      'Me encantaría saber cómo puedo ayudar. Ofrezco cotizaciones gratuitas, así que no dudes en contactarme para cualquier proyecto, grande o pequeño.',
+    info: {
+      postalAddress: 'Dirección Postal',
+      phoneNumber: 'Número de Teléfono',
+      email: 'Correo Electrónico',
+    },
+    form: {
+      fullName: 'Nombre Completo',
+      email: 'Correo Electrónico',
+      message: 'Mensaje',
+      submit: 'Enviar',
+    },
+  },
+  '404': {
+    header: 'Página no encontrada',
+    subtitle: 'Por favor, verifica la URL en la barra de direcciones e inténtalo de nuevo.',
+    action: 'Volver a la página de inicio',
+  },
+  header: {
+    logoAlt: 'Logo de Sylvia Castro',
+    description:
+      'Sylvia Castro es una traductora e intérprete de español con más de 20 años de experiencia en el área de San Diego.',
+    toggleLanguage: 'Alterna lenguaje',
+    toggleTheme: 'Alterna tema de color',
+    toggleMenu: 'Alterna menú',
+    links: [
       {
-        ref: '01',
-        name: 'Accuracy',
-        description:
-          'I am committed to delivering accurate translations and interpretations that faithfully convey the intended meaning and match the register of your message.',
+        name: 'Inicio',
+        href: '/',
       },
       {
-        ref: '02',
-        name: 'Professionalism',
-        description:
-          'I am dedicated to maintaining high professional standards, including punctuality, confidentiality, and ethical conduct.',
+        name: 'Acerca de mí',
+        href: '/about',
       },
       {
-        ref: '03',
-        name: 'Excellence',
-        description:
-          'I dedicate myself to providing top-of-the line service to suit your needs. I will do my best to meet and exceed your standard of excellence.',
-      },
-      {
-        ref: '04',
-        name: 'Respect',
-        description:
-          'I aim to be transparent in my pricing, processes, and project timelines, ensuring you know what to expect.',
+        name: 'Contacto',
+        href: '/contact',
       },
     ],
   },
-  contact: {
-    header: 'Unlock opportunities with Spanish-speakers',
-    subtitle:
-      "I'd love to know how I could be of help. I provide free quotes, so please feel free to reach out for any project, big or small!",
-    info: {
-      postalAddress: 'Postal Address',
-      phoneNumber: 'Phone Number',
-      email: 'Email',
-    },
-    form: {
-      fullName: 'Full Name',
-      email: 'Email',
-      message: 'Message',
-    },
-  },
-  404: {
-    header: 'Page not found',
-    subtitle: 'Please check the URL in the address bar and try again.',
-    action: 'Go back home',
-  },
-  header: {
-    logoAlt: 'Sylvia Castro Logo',
-    description:
-      'Sylvia Castro is a Spanish language translator and interpreter based in the San Diego Area with over 20 years of experience.',
-    toggleLanguage: 'Toggle Language',
-    toggleTheme: 'Toggle Theme',
-    toggleMenu: 'Toggle Menu',
-  },
   footer: {
-    logoAlt: 'Sylvia Castro Logo',
+    name: 'Pie de página',
+    logoAlt: 'Logo de Sylvia Castro',
     description:
-      'Sylvia Castro is a Spanish language translator and interpreter based in the San Diego Area with over 20 years of experience.',
-    copyright: 'Copyright © 2002-2023 Sylvia Castro',
-    social: {
-      title: 'Social',
-    },
-    internal: {
-      title: 'Internal',
-      home: 'Home',
-      about: 'About',
-      contact: 'Contact',
-    },
-    legal: {
-      title: 'Legal',
-      privacy: 'Privacy',
-    },
+      'Sylvia Castro es una traductora e intérprete de español con más de 20 años de experiencia en el área de San Diego.',
+    copyright: 'Derechos de autor © 2002-2023 Sylvia Castro',
+    linkGroups: [
+      {
+        header: 'Redes Sociales',
+        links: [
+          {
+            name: 'Yelp',
+            href: '',
+            isExternal: true,
+          },
+          {
+            name: 'Facebook',
+            href: '',
+            isExternal: true,
+          },
+        ],
+      },
+      {
+        header: 'Enlaces Internos',
+        links: [
+          {
+            name: 'Inicio',
+            href: '/',
+            isExternal: false,
+          },
+          {
+            name: 'Acerca de mí',
+            href: '/about',
+            isExternal: false,
+          },
+          {
+            name: 'Contacto',
+            href: '/contact',
+            isExternal: false,
+          },
+        ],
+      },
+      {
+        header: 'Información Legal',
+        links: [
+          {
+            name: 'Privacidad',
+            href: '/privacy',
+            isExternal: false,
+          },
+        ],
+      },
+    ],
   },
 };

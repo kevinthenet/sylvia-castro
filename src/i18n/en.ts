@@ -13,8 +13,9 @@ export const en: Localization = {
     },
     serviceSection: {
       header: 'Services',
-      serviceCategories: {
-        translation: {
+      serviceCategories: [
+        {
+          id: 'category-1',
           name: 'Translation Services',
           services: [
             'Document Translation',
@@ -29,7 +30,8 @@ export const en: Localization = {
             'Technical Manuals',
           ],
         },
-        interpretation: {
+        {
+          id: 'category-2',
           name: 'Interpretation Services',
           services: [
             'On-Site Interpretation',
@@ -43,7 +45,8 @@ export const en: Localization = {
             'Community Interpretation',
           ],
         },
-        additional: {
+        {
+          id: 'category-3',
           name: 'Additional Services',
           services: [
             'Language Consulting',
@@ -55,7 +58,7 @@ export const en: Localization = {
             'Custom Language Solutions',
           ],
         },
-      },
+      ],
     },
     aboutSection: {
       header: 'About me',
@@ -117,32 +120,39 @@ export const en: Localization = {
       text: "¡Hola! I'm Sylvia Castro, a San Diego-based professional interpreter and translator, certified by both the American Translators Association (ATA) and the Northern California Translators Association (NCTA). My extensive experience encompasses legal, social, family, employment, health, education, and government contexts, among others, serving various public and private organizations. In my translation work, I emphasize precision through rigorous proofreading and cross-referencing, ensuring that translated content preserves not only the words but also the true essence, context, tone, and message. My interpretation expertise, whether simultaneous or consecutive, relies on a deep understanding of language registers and equivalents, guaranteeing seamless communication. Count on me for accurate translations and faithful interpretations that exceed your expectations. Feel free to contact me for project quotes and assignment arrangements. Let's bridge linguistic divides and facilitate effortless communication together. ¡Contáctame hoy mismo! (Contact me today!)",
       stats: [{ name: 'Experience', value: 'Over 20 years' }],
     },
-    valuesSection: [
-      {
-        ref: '01',
-        name: 'Accuracy',
-        description:
-          'I am committed to delivering accurate translations and interpretations that faithfully convey the intended meaning and match the register of your message.',
-      },
-      {
-        ref: '02',
-        name: 'Professionalism',
-        description:
-          'I am dedicated to maintaining high professional standards, including punctuality, confidentiality, and ethical conduct.',
-      },
-      {
-        ref: '03',
-        name: 'Excellence',
-        description:
-          'I dedicate myself to providing top-of-the line service to suit your needs. I will do my best to meet and exceed your standard of excellence.',
-      },
-      {
-        ref: '04',
-        name: 'Respect',
-        description:
-          'I aim to be transparent in my pricing, processes, and project timelines, ensuring you know what to expect.',
-      },
-    ],
+    valuesSection: {
+      header: 'My values',
+      values: [
+        [
+          {
+            ref: '01',
+            name: 'Accuracy',
+            description:
+              'I am committed to delivering accurate translations and interpretations that faithfully convey the intended meaning and match the register of your message.',
+          },
+          {
+            ref: '02',
+            name: 'Professionalism',
+            description:
+              'I am dedicated to maintaining high professional standards, including punctuality, confidentiality, and ethical conduct.',
+          },
+        ],
+        [
+          {
+            ref: '03',
+            name: 'Excellence',
+            description:
+              'I dedicate myself to providing top-of-the line service to suit your needs. I will do my best to meet and exceed your standard of excellence.',
+          },
+          {
+            ref: '04',
+            name: 'Respect',
+            description:
+              'I aim to be transparent in my pricing, processes, and project timelines, ensuring you know what to expect.',
+          },
+        ],
+      ],
+    },
   },
   contact: {
     header: 'Unlock opportunities with Spanish-speakers',
@@ -157,6 +167,7 @@ export const en: Localization = {
       fullName: 'Full Name',
       email: 'Email',
       message: 'Message',
+      submit: 'Submit',
     },
   },
   404: {
@@ -168,27 +179,76 @@ export const en: Localization = {
     logoAlt: 'Sylvia Castro Logo',
     description:
       'Sylvia Castro is a Spanish language translator and interpreter based in the San Diego Area with over 20 years of experience.',
-    toggleLanguage: 'Toggle Language',
-    toggleTheme: 'Toggle Theme',
-    toggleMenu: 'Toggle Menu',
+    toggleLanguage: 'Toggle language',
+    toggleTheme: 'Toggle theme',
+    toggleMenu: 'Toggle menu',
+    links: [
+      {
+        name: 'Home',
+        href: '/',
+      },
+      {
+        name: 'About',
+        href: '/about',
+      },
+      {
+        name: 'Contact',
+        href: '/contact',
+      },
+    ],
   },
   footer: {
+    name: 'Footer',
     logoAlt: 'Sylvia Castro Logo',
     description:
       'Sylvia Castro is a Spanish language translator and interpreter based in the San Diego Area with over 20 years of experience.',
     copyright: 'Copyright © 2002-2023 Sylvia Castro',
-    social: {
-      title: 'Social',
-    },
-    internal: {
-      title: 'Internal',
-      home: 'Home',
-      about: 'About',
-      contact: 'Contact',
-    },
-    legal: {
-      title: 'Legal',
-      privacy: 'Privacy',
-    },
+    linkGroups: [
+      {
+        header: 'Social',
+        links: [
+          {
+            name: 'Yelp',
+            href: '',
+            isExternal: true,
+          },
+          {
+            name: 'Facebook',
+            href: '',
+            isExternal: true,
+          },
+        ],
+      },
+      {
+        header: 'Internal',
+        links: [
+          {
+            name: 'Home',
+            href: '/',
+            isExternal: false,
+          },
+          {
+            name: 'About',
+            href: '/about',
+            isExternal: false,
+          },
+          {
+            name: 'Contact',
+            href: '/contact',
+            isExternal: false,
+          },
+        ],
+      },
+      {
+        header: 'Legal',
+        links: [
+          {
+            name: 'Privacy',
+            href: '/privacy',
+            isExternal: false,
+          },
+        ],
+      },
+    ],
   },
 };

@@ -14,19 +14,10 @@ export type Localization = {
     serviceSection: {
       header: string;
       serviceCategories: {
-        translation: {
-          name: string;
-          services: string[];
-        };
-        interpretation: {
-          name: string;
-          services: string[];
-        };
-        additional: {
-          name: string;
-          services: string[];
-        };
-      };
+        id: string;
+        name: string;
+        services: string[];
+      }[];
     };
     aboutSection: {
       header: string;
@@ -60,10 +51,13 @@ export type Localization = {
       }[];
     };
     valuesSection: {
-      ref: string;
-      name: string;
-      description: string;
-    }[];
+      header: string;
+      values: {
+        ref: string;
+        name: string;
+        description: string;
+      }[][];
+    };
   };
   contact: {
     header: string;
@@ -77,6 +71,7 @@ export type Localization = {
       fullName: string;
       email: string;
       message: string;
+      submit: string;
     };
   };
   404: {
@@ -90,24 +85,24 @@ export type Localization = {
     toggleLanguage: string;
     toggleTheme: string;
     toggleMenu: string;
+    links: {
+      name: string;
+      href: string;
+    }[];
   };
   footer: {
+    name: string;
     logoAlt: string;
     description: string;
     copyright: string;
-    social: {
-      title: string;
-    };
-    internal: {
-      title: string;
-      home: string;
-      about: string;
-      contact: string;
-    };
-    legal: {
-      title: string;
-      privacy: string;
-    };
+    linkGroups: {
+      header: string;
+      links: {
+        name: string;
+        href: string;
+        isExternal: boolean;
+      }[];
+    }[];
   };
 };
 

@@ -1,10 +1,10 @@
 ---
-const stats = [
-  {
-    name: 'Experience',
-    value: 'Over 20 years',
-  },
-];
+import { localize, type LocalizationPath, messages } from '../../i18n';
+const prefix: LocalizationPath = 'about.missionSection';
+
+// TODO: hack for now, fix if there's a way for the alpine-i18n package to support arrays
+const statsEn = messages.en.about.missionSection.stats;
+const statsEs = messages.es.about.missionSection.stats;
 ---
 
 <section class="py-16 sm:py-20">
@@ -15,14 +15,22 @@ const stats = [
         width="576"
         height="864"
         src="/sylvia-castro.jpeg"
-        alt="Sylvia Castro Profile picture"
+        alt="Sylvia Castro"
       />
       <div class="flex flex-col gap-10">
         <!-- Mission description -->
         <div class="space-y-8 sm:space-y-12">
-          <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">My Mission</h2>
+          <h2
+            class="text-3xl font-medium tracking-tight sm:text-4xl"
+            x-text={localize(prefix, 'header')}
+          >
+            My Mission
+          </h2>
           <div class="space-y-6">
-            <p class="text-base text-primary-950/70 dark:text-primary-200/70 sm:text-lg">
+            <p
+              class="text-base text-primary-950/70 dark:text-primary-200/70 sm:text-lg"
+              x-text={localize(prefix, 'text')}
+            >
               ¡Hola! I'm Sylvia Castro, a San Diego-based professional interpreter and translator,
               certified by both the American Translators Association (ATA) and the Northern
               California Translators Association (NCTA). My extensive experience encompasses legal,
@@ -41,9 +49,25 @@ const stats = [
         </div>
 
         <!-- Stats -->
-        <dl class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <dl
+          class="grid grid-cols-1 gap-6 sm:grid-cols-2"
+          x-bind:class="{ 'hidden' : $locale() === 'es'}"
+        >
           {
-            stats.map((stat) => (
+            statsEn.map((stat) => (
+              <div class="rounded-3xl border border-primary-900/10 p-6 dark:border-primary-300/10">
+                <dt class="text-base">{stat.name}</dt>
+                <dd class="text-3xl font-medium tracking-tight">{stat.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <dl
+          class="grid grid-cols-1 gap-6 sm:grid-cols-2"
+          x-bind:class="{ 'hidden' : $locale() === 'en'}"
+        >
+          {
+            statsEs.map((stat) => (
               <div class="rounded-3xl border border-primary-900/10 p-6 dark:border-primary-300/10">
                 <dt class="text-base">{stat.name}</dt>
                 <dd class="text-3xl font-medium tracking-tight">{stat.value}</dd>

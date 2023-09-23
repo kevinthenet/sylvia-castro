@@ -1,18 +1,9 @@
 ---
-const links = [
-  {
-    name: 'Home',
-    href: '/',
-  },
-  {
-    name: 'About',
-    href: '/about',
-  },
-  {
-    name: 'Contact',
-    href: '/contact',
-  },
-];
+import { localize, type LocalizationPath, messages } from '../../i18n';
+const prefix: LocalizationPath = 'header';
+
+const linksEn = messages.en.header.links;
+const linksEs = messages.es.header.links;
 ---
 
 <header
@@ -47,7 +38,7 @@ const links = [
         x-data
         @click="$store.locale.toggle()"
       >
-        <span class="sr-only">Toggle locale mode</span>
+        <span class="sr-only" x-text={localize(prefix, 'toggleLanguage')}>Toggle locale mode</span>
         <h1 x-cloak :class="{ 'hidden': !($store.locale.spanishEnabled) }" aria-hidden="true">
           EN
         </h1>
@@ -61,7 +52,7 @@ const links = [
         x-data
         @click="$store.theme.toggle()"
       >
-        <span class="sr-only">Toggle theme mode</span>
+        <span class="sr-only" x-text={localize(prefix, 'toggleTheme')}>Toggle theme mode</span>
         <svg
           x-cloak
           class="h-6 w-6"
@@ -100,7 +91,7 @@ const links = [
         aria-expanded="false"
         :aria-expanded="open.toString()"
       >
-        <span class="sr-only">Toggle menu</span>
+        <span class="sr-only" x-text={localize(prefix, 'toggleMenu')}>Toggle menu</span>
         <svg
           x-cloak
           class="h-8 w-8"
@@ -144,6 +135,7 @@ const links = [
       >
         <p
           class="w-full text-left text-xl italic leading-loose text-primary-950/70 dark:text-primary-200/70"
+          x-text={localize(prefix, 'description')}
         >
           <span class="font-medium">Sylvia Castro</span> is a Spanish language translator and
           interpreter based in San Diego with over 20 years of experience.
@@ -151,9 +143,40 @@ const links = [
       </div>
 
       <!-- Navigation -->
-      <nav class="flex flex-col gap-1 divide-y divide-primary-900/10 dark:divide-primary-300/10">
+      <nav
+        class="flex flex-col gap-1 divide-y divide-primary-900/10 dark:divide-primary-300/10"
+        x-bind:class="{ 'hidden' : $locale() === 'es' }"
+      >
         {
-          links.map((link) => (
+          linksEn.map((link) => (
+            <a
+              href={link.href}
+              class="group inline-flex py-6 text-3xl font-medium tracking-tight text-primary-950 transition focus-visible:outline-none dark:text-primary-200 sm:py-8 sm:text-4xl"
+            >
+              <div class="flex flex-1 items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200">
+                <div class="flex items-center gap-6">
+                  <span class="group-hover:underline">{link.name}</span>
+                </div>
+                <svg
+                  class="h-6 w-6 text-primary-600 dark:text-primary-400 sm:h-8 sm:w-8"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
+                </svg>
+              </div>
+            </a>
+          ))
+        }
+      </nav>
+      <nav
+        class="flex flex-col gap-1 divide-y divide-primary-900/10 dark:divide-primary-300/10"
+        x-bind:class="{ 'hidden' : $locale() === 'en' }"
+      >
+        {
+          linksEs.map((link) => (
             <a
               href={link.href}
               class="group inline-flex py-6 text-3xl font-medium tracking-tight text-primary-950 transition focus-visible:outline-none dark:text-primary-200 sm:py-8 sm:text-4xl"
