@@ -170,6 +170,37 @@ export const en: Localization = {
       submit: 'Submit',
     },
   },
+  privacy: {
+    header: 'Privacy Policy',
+    subtitle: 'Last update: September 5, 2023',
+    preamble:
+      'We are committed to safeguarding your privacy. This Privacy Policy outlines how we collect, use, and protect your personal information when you use our website. Please take a moment to read through this document to understand our practices.',
+    informationCollected: {
+      header: '1. Information We Collect',
+      preamble:
+        'We may collect the following types of personal information when you interact with our website:',
+      list1:
+        'Information you provide: When you sign up, create an account, or use certain features, we may ask for your name, email address, contact details, and other relevant information.',
+      list2:
+        'Usage data: We may collect data about how you use our website, including but not limited to your IP address, browser type, device information, pages visited, and interactions with the content.',
+      list3:
+        'Cookies and similar technologies: We may use cookies and similar technologies to enhance your experience, understand usage patterns, and improve our website.',
+    },
+    informationUsage: {
+      header: '2. How We Use Your Information',
+      preamble: 'We may use your personal information for the following purposes:',
+      list1:
+        'To provide and improve our website: Your information helps us offer a personalized and user-friendly experience.',
+      list2:
+        'Communication: We may use your email address or contact details to send you important updates, newsletters, and promotional content. You can opt-out of these communications at any time.',
+      list3:
+        'Analytics: We use aggregated and anonymized data to analyze user behavior and improve our website.',
+    },
+    contactInformation: {
+      header: 'Contact Us',
+      text: 'If you have any questions or concerns about our Privacy Policy, please contact us at privacy@sylvia-castro.com.',
+    },
+  },
   404: {
     header: 'Page not found',
     subtitle: 'Please check the URL in the address bar and try again.',

@@ -170,6 +170,38 @@ export const es: Localization = {
       submit: 'Enviar',
     },
   },
+  privacy: {
+    header: 'Política de Privacidad',
+    subtitle: 'Última actualización: 5 de septiembre de 2023',
+    preamble:
+      'Estamos comprometidos a salvaguardar su privacidad. Esta Política de Privacidad describe cómo recopilamos, usamos y protegemos su información personal cuando utiliza nuestro sitio web. Por favor, tómese un momento para leer este documento y comprender nuestras prácticas.',
+    informationCollected: {
+      header: '1. Información que Recopilamos',
+      preamble:
+        'Podemos recopilar los siguientes tipos de información personal cuando interactúa con nuestro sitio web:',
+      list1:
+        'Información que usted proporciona: Cuando se registra, crea una cuenta o utiliza ciertas funciones, podemos solicitar su nombre, dirección de correo electrónico, datos de contacto y otra información relevante.',
+      list2:
+        'Datos de uso: Podemos recopilar datos sobre cómo utiliza nuestro sitio web, incluyendo, entre otros, su dirección IP, tipo de navegador, información del dispositivo, páginas visitadas e interacciones con el contenido.',
+      list3:
+        'Cookies y tecnologías similares: Podemos utilizar cookies y tecnologías similares para mejorar su experiencia, comprender patrones de uso y mejorar nuestro sitio web.',
+    },
+    informationUsage: {
+      header: '2. Cómo Utilizamos Su Información',
+      preamble: 'Podemos utilizar su información personal para los siguientes fines:',
+      list1:
+        'Para proporcionar y mejorar nuestro sitio web: Su información nos ayuda a ofrecer una experiencia personalizada y amigable para el usuario.',
+      list2:
+        'Comunicación: Podemos utilizar su dirección de correo electrónico o datos de contacto para enviarle actualizaciones importantes, boletines y contenido promocional. Puede optar por no recibir estas comunicaciones en cualquier momento.',
+      list3:
+        'Analítica: Utilizamos datos agregados y anonimizados para analizar el comportamiento del usuario y mejorar nuestro sitio web.',
+    },
+    contactInformation: {
+      header: 'Contáctenos',
+      text: 'Si tiene alguna pregunta o inquietud sobre nuestra Política de Privacidad, por favor contáctenos en privacy@sylvia-castro.com.',
+    },
+  },
+
   '404': {
     header: 'Página no encontrada',
     subtitle: 'Por favor, verifica la URL en la barra de direcciones e inténtalo de nuevo.',

@@ -74,6 +74,29 @@ export type Localization = {
       submit: string;
     };
   };
+  privacy: {
+    header: string;
+    subtitle: string;
+    preamble: string;
+    informationCollected: {
+      header: string;
+      preamble: string;
+      list1: string;
+      list2: string;
+      list3: string;
+    };
+    informationUsage: {
+      header: string;
+      preamble: string;
+      list1: string;
+      list2: string;
+      list3: string;
+    };
+    contactInformation: {
+      header: string;
+      text: string;
+    };
+  };
   404: {
     header: string;
     subtitle: string;
