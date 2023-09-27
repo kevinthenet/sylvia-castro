@@ -239,13 +239,8 @@ export const en: Localization = {
         header: 'Social',
         links: [
           {
-            name: 'Yelp',
-            href: '',
-            isExternal: true,
-          },
-          {
-            name: 'Facebook',
-            href: '',
+            name: 'Instagram',
+            href: 'https://www.instagram.com/interpreter_sylvia_castro/',
             isExternal: true,
           },
         ],
