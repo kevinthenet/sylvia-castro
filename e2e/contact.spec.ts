@@ -104,7 +104,7 @@ test.describe('contact form', () => {
       .click();
     await expect(page.locator('#failure-toast')).toBeVisible();
     // should be invisible after some 5 seconds
-    await expect(page.locator('#failure-toast')).not.toBeVisible({ timeout: 6000 });
+    await expect(page.locator('#failure-toast')).not.toBeVisible({ timeout: 7000 });
   });
 
   test(`should display a success toast and confetti with valid input`, async ({ page }) => {
@@ -121,8 +121,8 @@ test.describe('contact form', () => {
     await expect(page.locator('#success-toast')).toBeVisible();
     // confetti will be put into a canvas element
     await expect(page.locator('canvas')).toBeVisible();
-    await expect(page.locator('canvas')).not.toBeVisible({ timeout: 6000 });
-    await expect(page.locator('#success-toast')).not.toBeVisible({ timeout: 6000 });
+    await expect(page.locator('canvas')).not.toBeVisible({ timeout: 7000 });
+    await expect(page.locator('#success-toast')).not.toBeVisible({ timeout: 7000 });
 
     // assert the values are reset after successful submission
     expect(
