@@ -34,8 +34,8 @@ const linksEs = messages.es.header.links;
       <!-- Toggle locale mode -->
       <button
         type="button"
+        id="toggle-locale"
         class="inline-flex h-14 w-14 items-center justify-center rounded-full text-primary-950 ring-primary-950 transition hover:bg-primary-500/10 focus:outline-none focus-visible:ring-2 dark:text-primary-200 dark:hover:bg-primary-400/10"
-        x-data
         @click="$store.locale.toggle()"
       >
         <span class="sr-only" x-text={localize(prefix, 'toggleLanguage')}>Toggle locale mode</span>
@@ -48,8 +48,8 @@ const linksEs = messages.es.header.links;
       <!-- Toggle theme mode -->
       <button
         type="button"
+        id="toggle-theme"
         class="inline-flex h-14 w-14 items-center justify-center rounded-full text-primary-950 ring-primary-950 transition hover:bg-primary-500/10 focus:outline-none focus-visible:ring-2 dark:text-primary-200 dark:hover:bg-primary-400/10"
-        x-data
         @click="$store.theme.toggle()"
       >
         <span class="sr-only" x-text={localize(prefix, 'toggleTheme')}>Toggle theme mode</span>
@@ -84,6 +84,7 @@ const linksEs = messages.es.header.links;
       <!-- Toggle menu -->
       <button
         type="button"
+        id="toggle-menu"
         class="inline-flex h-14 w-14 items-center justify-center rounded-full text-primary-950 ring-primary-950 transition hover:bg-primary-500/10 focus:outline-none focus-visible:ring-2 dark:text-primary-200 dark:hover:bg-primary-400/10"
         @click="open = !open"
         @mousedown="if (open) $event.preventDefault()"
