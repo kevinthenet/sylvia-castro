@@ -4,13 +4,15 @@ import '@fontsource/inter/latin-500.css';
 import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
+import { localize } from 'src/i18n';
 
 interface Props {
   description: string;
+  page: any;
   title: string;
 }
 
-const { description, title } = Astro.props;
+const { description, page, title } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,7 +26,7 @@ const { description, title } = Astro.props;
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <title>{title}</title>
+    <title x-text={localize(page, 'title')}>{title}</title>
     <ViewTransitions />
   </head>
   <body

@@ -2,6 +2,7 @@ import { type Localization } from './index';
 
 export const es: Localization = {
   homepage: {
+    title: 'Sylvia Castro',
     heroSection: {
       header: 'Sirviendo a San Diego y más allá',
       subtitle:
@@ -112,6 +113,7 @@ export const es: Localization = {
     },
   },
   about: {
+    title: 'Sylvia Castro · Acerca de mí',
     header: 'Acerca de mí',
     subtitle: 'Superando barreras lingüísticas y culturales',
     missionSection: {
@@ -155,7 +157,8 @@ export const es: Localization = {
     },
   },
   contact: {
-    header: 'Desbloquea oportunidades con hablantes de español',
+    title: 'Sylvia Castro · Contacto',
+    header: 'Desbloquea oportunidades con anglohablantes',
     subtitle:
       'Me encantaría saber cómo puedo ayudar. Ofrezco cotizaciones gratuitas, así que no dudes en contactarme para cualquier proyecto, grande o pequeño.',
     info: {
@@ -171,6 +174,7 @@ export const es: Localization = {
     },
   },
   privacy: {
+    title: 'Sylvia Castro: Política de Privacidad',
     header: 'Política de Privacidad',
     subtitle: 'Última actualización: 5 de septiembre de 2023',
     preamble:
@@ -201,8 +205,8 @@ export const es: Localization = {
       text: 'Si tiene alguna pregunta o inquietud sobre nuestra Política de Privacidad, por favor contáctenos en privacy@sylvia-castro.com.',
     },
   },
-
   '404': {
+    title: 'Sylvia Castro · Página no encontrada',
     header: 'Página no encontrada',
     subtitle: 'Por favor, verifica la URL en la barra de direcciones e inténtalo de nuevo.',
     action: 'Volver a la página de inicio',

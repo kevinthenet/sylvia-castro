@@ -3,6 +3,7 @@ import { es } from './es';
 
 export type Localization = {
   homepage: {
+    title: string;
     heroSection: {
       header: string;
       subtitle: string;
@@ -39,6 +40,7 @@ export type Localization = {
     };
   };
   about: {
+    title: string;
     header: string;
     subtitle: string;
     missionSection: {
@@ -60,6 +62,7 @@ export type Localization = {
     };
   };
   contact: {
+    title: string;
     header: string;
     subtitle: string;
     info: {
@@ -75,6 +78,7 @@ export type Localization = {
     };
   };
   privacy: {
+    title: string;
     header: string;
     subtitle: string;
     preamble: string;
@@ -98,6 +102,7 @@ export type Localization = {
     };
   };
   404: {
+    title: string;
     header: string;
     subtitle: string;
     action: string;

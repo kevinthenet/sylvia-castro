@@ -2,6 +2,7 @@ import { type Localization } from './index';
 
 export const en: Localization = {
   homepage: {
+    title: 'Sylvia Castro',
     heroSection: {
       header: 'Serving San Diego and beyond',
       subtitle:
@@ -112,6 +113,7 @@ export const en: Localization = {
     },
   },
   about: {
+    title: 'Sylvia Castro · About',
     header: 'About Me',
     subtitle: 'Bridging language and cultural barriers',
     missionSection: {
@@ -155,6 +157,7 @@ export const en: Localization = {
     },
   },
   contact: {
+    title: 'Sylvia Castro · Contact Me',
     header: 'Unlock opportunities with Spanish-speakers',
     subtitle:
       "I'd love to know how I could be of help. I provide free quotes, so please feel free to reach out for any project, big or small!",
@@ -171,6 +174,7 @@ export const en: Localization = {
     },
   },
   privacy: {
+    title: 'Sylvia Castro · Privacy Policy',
     header: 'Privacy Policy',
     subtitle: 'Last update: September 5, 2023',
     preamble:
@@ -202,6 +206,7 @@ export const en: Localization = {
     },
   },
   404: {
+    title: 'Sylvia Castro · Not found',
     header: 'Page not found',
     subtitle: 'Please check the URL in the address bar and try again.',
     action: 'Go back home',
