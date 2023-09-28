@@ -1,7 +1,12 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { localizedText, Language } from 'src/i18n';
+
+let language: Language;
 
 test.beforeEach(async ({ page }) => {
+  const locale = await page.evaluate(() => window.navigator.language);
+  language = locale.slice(0, 2) as Language;
   await page.goto('/about');
 });
 
@@ -11,44 +16,45 @@ test.skip('should not have any automatically detectable accessibility issues', a
   expect(accessibilityScanResults.violations).toEqual([]);
 
   // test dark mode for accessibility violations as well
-  await page.getByRole('button').filter({ hasText: 'Toggle theme mode' }).click();
+  await page
+    .getByRole('button')
+    .filter({ hasText: localizedText(language, 'header.toggleMenu') })
+    .click();
 
   const darkModeAccessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
   expect(darkModeAccessibilityScanResults.violations).toEqual([]);
 });
 
-test('should contain in title: About', async ({ page }) => {
-  await expect(page).toHaveTitle(/About/);
+test('should contain localized title', async ({ page }) => {
+  await expect(page).toHaveTitle(localizedText(language, 'about.title'));
 });
 
-test('should contain a mission section', async ({ page }) => {
-  const missionSection = page.locator('section').filter({ hasText: 'Our Mission' });
+test('should contain a localized mission section', async ({ page }) => {
+  const missionSection = page
+    .locator('section')
+    .filter({ hasText: localizedText(language, 'about.missionSection.header') });
+
+  const stats = localizedText(language, 'about.missionSection.stats');
 
   await expect(missionSection).toBeVisible();
-  await expect(missionSection.locator('dl dt')).toContainText([
-    'Established',
-    'Projects',
-    'Concurrent Project Teams',
-    'Awards',
-  ]);
+  await expect(missionSection.locator('dl:not(.hidden) dt')).toContainText(
+    stats.map((stat) => stat.name)
+  );
 });
 
-test('should have a values section', async ({ page }) => {
-  const valuesSection = page.locator('section').filter({ hasText: 'Our Values' });
+test('should have a localized values section', async ({ page }) => {
+  const valuesSection = page
+    .locator('section')
+    .filter({ hasText: localizedText(language, 'about.valuesSection.header') });
 
   await expect(valuesSection).toBeVisible();
 
-  await expect(valuesSection.locator('h3')).toContainText([
-    'Excellence',
-    'Communication', // this happens because communication appears first in vertical order
-    'Accountability',
-    'Respect',
-  ]);
-});
+  const values = localizedText(language, 'about.valuesSection.values');
+  const [valuesCol1, valuesCol2] = values;
 
-test('should have a "Meet our team" section', async ({ page }) => {
-  const meetOurTeamSection = page.locator('section').filter({ hasText: 'Meet our team' });
-  await expect(meetOurTeamSection).toBeVisible();
-  await expect(meetOurTeamSection.locator('h3')).toContainText(['Victor Castro', 'Kevin Castro']);
+  await expect(valuesSection.locator('h3')).toContainText([
+    ...valuesCol1.map((v) => v.name),
+    ...valuesCol2.map((v) => v.name),
+  ]);
 });

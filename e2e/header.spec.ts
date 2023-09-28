@@ -1,9 +1,19 @@
 import { test, expect } from '@playwright/test';
+import { localizedText, Language } from 'src/i18n';
+
+let language: Language;
+let internalLinkNames: string[] = [];
 
 test.beforeEach(async ({ page }) => {
+  const locale = await page.evaluate(() => window.navigator.language);
+  language = locale.slice(0, 2) as Language;
+
+  const internalLinks = localizedText(language, 'header.links');
+  internalLinkNames = internalLinks.map((l) => l.name);
+
   const availablePages = ['/', '/about', '/contact', '/privacy', '/404'];
   const randomIndex = Math.floor(Math.random() * availablePages.length);
-  // intentionally go to any page to verify this works in all pages
+  // sample from all pages to verify this works in all pages
   await page.goto(availablePages[randomIndex]);
 });
 
@@ -13,59 +23,37 @@ test('should have a logo', async ({ page }) => {
   await expect(header.getByAltText('Sylvia Castro Logo')).toBeVisible();
 });
 
-test('should have a toggle theme button', async ({ page }) => {
-  const header = page.locator('header');
-  const toggleThemeButton = header.getByRole('button').filter({ hasText: 'Toggle theme mode' });
-  await expect(toggleThemeButton).toBeVisible();
-});
-
-test('should have a clickable menu toggle', async ({ page }) => {
-  const header = page.locator('header');
-
-  const menuToggle = header.getByRole('button').filter({ hasText: 'Toggle Menu' });
-
-  await expect(menuToggle).toBeVisible();
-  await menuToggle.click({ trial: true });
-});
+const buttonSelectors = ['#toggle-locale', '#toggle-theme', '#toggle-menu'];
+for (const selector of buttonSelectors) {
+  test(`should have a clickable ${selector} button`, async ({ page }) => {
+    const header = page.locator('header');
+    const button = header.locator(selector);
+    await expect(button).toBeVisible();
+    await button.click({ trial: true });
+  });
+}
 
 test('should have some description text', async ({ page }) => {
   const header = page.locator('header');
 
-  const menuToggle = header.getByRole('button').filter({ hasText: 'Toggle Menu' });
+  const menuToggle = header
+    .getByRole('button')
+    .filter({ hasText: localizedText(language, 'header.toggleMenu') });
   // expand header section
   await menuToggle.click();
 
   await expect(
-    header.getByRole('paragraph').filter({ hasText: 'one home at a time' })
+    header.getByRole('paragraph').filter({ hasText: localizedText(language, 'header.description') })
   ).toBeVisible();
 });
 
-test('should have a clickable license number, which opens a new tab to the CSLB government site when clicked', async ({
-  page,
-}) => {
-  const header = page.locator('header');
-
-  const menuToggle = header.getByRole('button').filter({ hasText: 'Toggle Menu' });
-  // expand header section
-  await menuToggle.click();
-
-  const licenseNumber = header.getByRole('link').filter({ hasText: 'License' });
-  await expect(licenseNumber).toBeVisible();
-
-  const newTabPromise = page.waitForEvent('popup');
-  await licenseNumber.click();
-  const newTab = await newTabPromise;
-
-  await newTab.waitForLoadState();
-  await expect(newTab).toHaveURL(/cslb\.ca\.gov/);
-});
-
-const internalLinks = ['Home', 'About', 'Contact'];
-for (const link of internalLinks) {
+for (const link of internalLinkNames) {
   test(`should have an internal company link: ${link}`, async ({ page }) => {
     const header = page.locator('header');
 
-    const menuToggle = header.getByRole('button').filter({ hasText: 'Toggle Menu' });
+    const menuToggle = header
+      .getByRole('button')
+      .filter({ hasText: localizedText(language, 'header.toggleMenu') });
     // expand header section
     await menuToggle.click();
 

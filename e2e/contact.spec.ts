@@ -1,7 +1,12 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { localizedText, Language } from 'src/i18n';
+
+let language: Language;
 
 test.beforeEach(async ({ page }) => {
+  const locale = await page.evaluate(() => window.navigator.language);
+  language = locale.slice(0, 2) as Language;
   await page.goto('/contact');
 });
 
@@ -18,31 +23,33 @@ test.skip('should not have any automatically detectable accessibility issues', a
   expect(darkModeAccessibilityScanResults.violations).toEqual([]);
 });
 
-test('should contain in title: Contact Us', async ({ page }) => {
-  await expect(page).toHaveTitle(/Contact Us/);
+test(`should contain in title: Contact Us`, async ({ page }) => {
+  await expect(page).toHaveTitle(localizedText(language, 'contact.title'));
 });
 
-test('should contain a heading reading: "Let\'s build something together"', async ({ page }) => {
-  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+test(`should contain a localized heading`, async ({ page }) => {
+  const contactHeading = page.getByRole('heading', {
+    level: 1,
+    name: localizedText(language, 'contact.header'),
+  });
+  await expect(contactHeading).toBeVisible();
 });
 
-test('should contain an address', async ({ page }) => {
-  const addressLine1 = page.getByRole('paragraph').filter({ hasText: '49 Edgewood Road' });
-  const addressLine2 = page.getByRole('paragraph').filter({ hasText: 'Redwood City, CA 94062' });
+test(`should contain an address`, async ({ page }) => {
+  const addressLine1 = page.getByRole('paragraph').filter({ hasText: 'San Diego, CA' });
 
   await expect(addressLine1).toBeVisible();
-  await expect(addressLine2).toBeVisible();
 });
 
-test('should contain a phone number that can be dialed from the site', async ({ page }) => {
-  const phoneNumber = page.getByRole('link').filter({ hasText: '+1 (650) 483-7651' });
+test(`should contain a phone number that can be dialed from the site`, async ({ page }) => {
+  const phoneNumber = page.getByRole('link').filter({ hasText: '+1 (619) 572-3537' });
 
   await expect(phoneNumber).toBeVisible();
   await phoneNumber.click();
   await expect(page).toHaveURL(/contact/);
 });
 
-test('should have a clickable link to email hello@sylvia-castro.com', async ({ page }) => {
+test(`should have a clickable link to email hello@sylvia-castro.com`, async ({ page }) => {
   const contactEmail = page.getByRole('link').filter({ hasText: 'hello@sylvia-castro.com' });
 
   await expect(contactEmail).toBeVisible();
@@ -52,13 +59,8 @@ test('should have a clickable link to email hello@sylvia-castro.com', async ({ p
 });
 
 test.describe('contact form', () => {
-  const fields = ['Full Name', 'Email', 'Message'];
-
-  for (const field of fields) {
-    test(`contains field: ${field}`, async ({ page }) => {
-      await expect(page.getByLabel(field)).toBeVisible();
-    });
-  }
+  let language: Language;
+  let fields: string[] = [];
 
   test.beforeEach(async ({ page }) => {
     // set up a route to intercept FormKeep requests and respond with 200
@@ -68,12 +70,26 @@ test.describe('contact form', () => {
       console.log(request.postData());
       await route.fulfill({ status: 200 });
     });
+
+    const locale = await page.evaluate(() => window.navigator.language);
+    language = locale.slice(0, 2) as Language;
+    fields = [
+      localizedText(language, 'contact.form.fullName'),
+      localizedText(language, 'contact.form.email'),
+      localizedText(language, 'contact.form.message'),
+    ];
   });
 
-  test('should display an error toast with invalid input', async ({ page }) => {
+  for (const field of fields) {
+    test(`contains field: ${field}`, async ({ page }) => {
+      await expect(page.getByLabel(field)).toBeVisible();
+    });
+  }
+
+  test(`should display an error toast with invalid input`, async ({ page }) => {
     // explicitly abort requests to FormKeep, just for extra safety
     await page.route('https://formkeep.com/f/bf8f2fdda780', async (route, request) => {
-      console.log(`Request to ${request.url()} intercepted by Playwright`);
+      console.log(`Request to ${request.url()} intercepted by Playwright, will be aborted`);
       console.log(await request.allHeaders());
       console.log(request.postData());
       await route.abort('failed');
@@ -83,18 +99,24 @@ test.describe('contact form', () => {
       await page.getByLabel(field).fill('asdf');
     });
 
-    await page.getByRole('button', { name: 'Submit' }).click();
+    await page
+      .getByRole('button', { name: localizedText(language, 'contact.form.submit') })
+      .click();
     await expect(page.locator('#failure-toast')).toBeVisible();
     // should be invisible after some 5 seconds
     await expect(page.locator('#failure-toast')).not.toBeVisible({ timeout: 6000 });
   });
 
-  test('should display a success toast and confetti with valid input', async ({ page }) => {
-    await page.getByLabel('Full Name').fill('Test Person');
-    await page.getByLabel('Email').fill('test@sylvia-castro.com');
-    await page.getByLabel('Message').fill('This is a test');
+  test(`should display a success toast and confetti with valid input`, async ({ page }) => {
+    await page.getByLabel(localizedText(language, 'contact.form.fullName')).fill('Test Person');
+    await page
+      .getByLabel(localizedText(language, 'contact.form.email'))
+      .fill('test@sylvia-castro.com');
+    await page.getByLabel(localizedText(language, 'contact.form.message')).fill('This is a test');
 
-    await page.getByRole('button', { name: 'Submit' }).click();
+    await page
+      .getByRole('button', { name: localizedText(language, 'contact.form.submit') })
+      .click();
     await expect(page).toHaveURL(/contact/);
     await expect(page.locator('#success-toast')).toBeVisible();
     // confetti will be put into a canvas element
@@ -103,8 +125,14 @@ test.describe('contact form', () => {
     await expect(page.locator('#success-toast')).not.toBeVisible({ timeout: 6000 });
 
     // assert the values are reset after successful submission
-    expect(await page.getByLabel('Full Name').inputValue()).toBe('');
-    expect(await page.getByLabel('Email').inputValue()).toBe('');
-    expect(await page.getByLabel('Message').inputValue()).toBe('');
+    expect(
+      await page.getByLabel(localizedText(language, 'contact.form.fullName')).inputValue()
+    ).toBe('');
+    expect(await page.getByLabel(localizedText(language, 'contact.form.email')).inputValue()).toBe(
+      ''
+    );
+    expect(
+      await page.getByLabel(localizedText(language, 'contact.form.message')).inputValue()
+    ).toBe('');
   });
 });

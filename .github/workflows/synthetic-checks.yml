@@ -14,13 +14,28 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - project: chromium
+          - project: chromium-en
+            browser: chromium
             os: ubuntu-latest
             cache_dir: ~/.cache/ms-playwright
-          - project: firefox
+          - project: chromium-es
+            browser: chromium
             os: ubuntu-latest
             cache_dir: ~/.cache/ms-playwright
-          - project: webkit
+          - project: firefox-en
+            browser: firefox
+            os: ubuntu-latest
+            cache_dir: ~/.cache/ms-playwright
+          - project: firefox-es
+            browser: firefox
+            os: ubuntu-latest
+            cache_dir: ~/.cache/ms-playwright
+          - project: webkit-en
+            browser: webkit
+            os: macos-12
+            cache_dir: ~/Library/Caches/ms-playwright
+          - project: webkit-es
+            browser: webkit
             os: macos-12
             cache_dir: ~/Library/Caches/ms-playwright
     timeout-minutes: 20
@@ -53,7 +68,7 @@ jobs:
 
       - name: Install Playwright Browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: pnpm exec playwright install --with-deps ${{ matrix.project }}
+        run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
 
       - name: Run synthetic checks
         run: pnpm synthetic:check --project=${{ matrix.project }}

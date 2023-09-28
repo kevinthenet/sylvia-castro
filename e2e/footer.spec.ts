@@ -1,6 +1,21 @@
 import { test, expect } from '@playwright/test';
+import { localizedText, Language } from 'src/i18n';
+
+let language: Language;
+let socialLinkNames: string[] = [];
+let internalLinkNames: string[] = [];
+let legalLinkNames: string[] = [];
 
 test.beforeEach(async ({ page }) => {
+  const locale = await page.evaluate(() => window.navigator.language);
+  language = locale.slice(0, 2) as Language;
+
+  const linkGroups = localizedText(language, 'footer.linkGroups');
+  const [social, internal, legal] = linkGroups;
+  socialLinkNames = social.links.map((l) => l.name);
+  internalLinkNames = internal.links.map((l) => l.name);
+  legalLinkNames = legal.links.map((l) => l.name);
+
   const availablePages = ['/', '/about', '/contact', '/privacy', '/404'];
   const randomIndex = Math.floor(Math.random() * availablePages.length);
   // intentionally go to any page to verify this works in all pages
@@ -17,44 +32,11 @@ test('should have some description text', async ({ page }) => {
   const footer = page.locator('footer');
 
   await expect(
-    footer.getByRole('paragraph').filter({ hasText: 'one home at a time' })
+    footer.getByRole('paragraph').filter({ hasText: localizedText(language, 'footer.description') })
   ).toBeVisible();
 });
 
-test('should have a clickable license number, opening a new tab to the CSLB government site', async ({
-  page,
-}) => {
-  const footer = page.locator('footer');
-
-  const licenseNumber = footer.getByLabel('License');
-  await expect(licenseNumber).toBeVisible();
-
-  const newTabPromise = page.waitForEvent('popup');
-  await licenseNumber.click();
-  const newTab = await newTabPromise;
-
-  await newTab.waitForLoadState();
-  await expect(newTab).toHaveURL(/cslb\.ca\.gov/);
-});
-
-test('should have a clickable image, opening a new tab to the BBB accreditation information', async ({
-  page,
-}) => {
-  const footer = page.locator('footer');
-
-  const bbbImage = footer.getByAltText('Better Business Bureau Accredited Business');
-  await expect(bbbImage).toBeVisible();
-
-  const newTabPromise = page.waitForEvent('popup');
-  await bbbImage.click();
-  const newTab = await newTabPromise;
-
-  await newTab.waitForLoadState();
-  await expect(newTab).toHaveURL(/bbb\.org/);
-});
-
-const socialLinks = ['Yelp', 'Houzz', 'Facebook'];
-for (const link of socialLinks) {
+for (const link of socialLinkNames) {
   test(`should have an external link to: ${link}`, async ({ page }) => {
     const footer = page.locator('footer');
 
@@ -70,8 +52,19 @@ for (const link of socialLinks) {
   });
 }
 
-const internalLinks = ['Home', 'About', 'Contact', 'Privacy'];
-for (const link of internalLinks) {
+for (const link of internalLinkNames) {
+  test(`should have an internal company link: ${link}`, async ({ page }) => {
+    const footer = page.locator('footer');
+
+    const internalLink = footer.getByRole('link', { name: link });
+    await expect(internalLink).toBeVisible();
+
+    await internalLink.click();
+    await expect(page).toHaveURL(/sylvia-castro/);
+  });
+}
+
+for (const link of legalLinkNames) {
   test(`should have an internal company link: ${link}`, async ({ page }) => {
     const footer = page.locator('footer');
 

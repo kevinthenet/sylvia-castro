@@ -34,18 +34,33 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'chromium-en',
+      use: { ...devices['Desktop Chrome'], locale: 'en-US' },
     },
 
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: 'chromium-es',
+      use: { ...devices['Desktop Chrome'], locale: 'es-MX' },
     },
 
     {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      name: 'firefox-en',
+      use: { ...devices['Desktop Firefox'], locale: 'en-US' },
+    },
+
+    {
+      name: 'firefox-es',
+      use: { ...devices['Desktop Firefox'], locale: 'en-MX' },
+    },
+
+    {
+      name: 'webkit-en',
+      use: { ...devices['Desktop Safari'], locale: 'en-US' },
+    },
+
+    {
+      name: 'webkit-es',
+      use: { ...devices['Desktop Safari'], locale: 'en-MX' },
     },
   ],
   //

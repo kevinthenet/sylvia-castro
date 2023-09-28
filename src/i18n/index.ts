@@ -134,7 +134,7 @@ export type Localization = {
   };
 };
 
-type Language = 'en' | 'es';
+export type Language = 'en' | 'es';
 
 type Messages = Record<Language, Localization>;
 
@@ -160,3 +160,8 @@ type LocalizationLeaf = Leaves<Localization>;
 
 export const localize = (prefix: LocalizationPath, component: string) =>
   `$t('${prefix}.${component}')`;
+
+export const localizedText = (locale: Language, path: LocalizationPath) => {
+  const msgs = messages[locale];
+  return path.split('.').reduce((o, i) => o[i], msgs);
+};
