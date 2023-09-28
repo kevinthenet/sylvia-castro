@@ -91,6 +91,7 @@ const { description, page, title } = Astro.props;
             }
 
             if (window.navigator.language.startsWith('es')) {
+              window.AlpineI18n.locale = 'es';
               return true;
             }
 
