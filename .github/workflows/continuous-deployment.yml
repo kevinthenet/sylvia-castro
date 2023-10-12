@@ -23,19 +23,7 @@ permissions:
   id-token: write
 
 jobs:
-  on-success:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    steps:
-      - run: echo 'Previous workflow run succeeded, so starting build and deploy process'
-  on-failure:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    steps:
-      - run: echo '::error::Previous workflow run failed, so avoiding running a build'
   build:
-    needs:
-      - on-success
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
@@ -49,7 +37,6 @@ jobs:
           pnpm-version: 8.7.4
   deploy:
     needs:
-      - on-success
       - build
     runs-on: ubuntu-latest
     environment:
