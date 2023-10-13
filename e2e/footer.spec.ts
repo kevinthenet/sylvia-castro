@@ -1,5 +1,6 @@
-import { test, expect } from '@playwright/test';
-import { localizedText, Language } from 'src/i18n';
+import { Language, localizedText } from 'src/i18n';
+
+import { expect, test } from './base-test';
 
 let language: Language;
 let socialLinkNames: string[] = [];

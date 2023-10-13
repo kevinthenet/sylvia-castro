@@ -1,6 +1,7 @@
-import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { localizedText, Language } from 'src/i18n';
+import { Language, localizedText } from 'src/i18n';
+
+import { expect, test } from './base-test';
 
 let language: Language;
 
