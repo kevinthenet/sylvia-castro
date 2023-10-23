@@ -1,4 +1,4 @@
-import { type Localization } from './index';
+import type { Localization } from '.';
 
 export const en: Localization = {
   homepage: {
@@ -74,7 +74,7 @@ export const en: Localization = {
           name: 'Rosemarie Perez',
           image: '/rosemarie-perez.jpeg',
           message:
-            'Sylvia Castro worked for me as a translator and interpreter for three years. She was excellent at her job. She has since received certification as an interpreter. This highly skilled individual would be an asset to organizations wanting to communicate in Spanish.Sylvia Castro worked for me as a translator and interpreter for three years. She was excellent at her job. She has since received certification as an interpreter. This highly skilled individual would be an asset to organizations wanting to communicate in Spanish.',
+            'Sylvia Castro worked for me as a translator and interpreter for three years. She was excellent at her job. She has since received certification as an interpreter. This highly skilled individual would be an asset to organizations wanting to communicate in Spanish.',
         },
         {
           name: 'Rita Melton',
@@ -97,7 +97,7 @@ export const en: Localization = {
         {
           name: 'Julia Morales',
           message:
-            'Sylvia was one of the best students in the classroom who was of great help to the professor. She was fluent in both languages and a leader in the classroom.Sylvia was one of the best students in the classroom who was of great help to the professor. She was fluent in both languages and a leader in the classroom.',
+            'Sylvia was one of the best students in the classroom who was of great help to the professor. She was fluent in both languages and a leader in the classroom.',
         },
         {
           name: 'Juanita Ramirez',

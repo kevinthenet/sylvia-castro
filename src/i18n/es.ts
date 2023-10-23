@@ -1,4 +1,4 @@
-import { type Localization } from './index';
+import type { Localization } from '.';
 
 export const es: Localization = {
   homepage: {
@@ -74,7 +74,7 @@ export const es: Localization = {
           name: 'Rosemarie Perez',
           image: '/rosemarie-perez.jpeg',
           message:
-            'Sylvia Castro trabajó para mí como traductora e intérprete durante tres años. Fue excelente en su trabajo. Desde entonces ha obtenido certificación como intérprete. Esta persona altamente capacitada sería un activo para las organizaciones que deseen comunicarse en español. Sylvia Castro trabajó para mí como traductora e intérprete durante tres años. Fue excelente en su trabajo. Desde entonces ha obtenido certificación como intérprete. Esta persona altamente capacitada sería un activo para las organizaciones que deseen comunicarse en español.',
+            'Sylvia Castro trabajó para mí como traductora e intérprete durante tres años. Fue excelente en su trabajo. Desde entonces ha obtenido certificación como intérprete. Esta persona altamente capacitada sería un activo para las organizaciones que deseen comunicarse en español.',
         },
         {
           name: 'Rita Melton',
@@ -97,7 +97,7 @@ export const es: Localization = {
         {
           name: 'Julia Morales',
           message:
-            'Sylvia fue una de las mejores estudiantes en el aula y fue de gran ayuda para el profesor. Hablaba fluidamente ambos idiomas y era líder en el aula. Sylvia fue una de las mejores estudiantes en el aula y fue de gran ayuda para el profesor. Hablaba fluidamente ambos idiomas y era líder en el aula.',
+            'Sylvia fue una de las mejores estudiantes en el aula y fue de gran ayuda para el profesor. Hablaba fluidamente ambos idiomas y era líder en el aula.',
         },
         {
           name: 'Juanita Ramirez',
